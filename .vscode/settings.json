@@ -1,0 +1,20 @@
+{
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.flake8Enabled": true,
+  "python.sortImports.path": "isort",
+  "python.linting.pylintEnabled": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "[python]": {
+    "editor.tabSize": 4 // インデントレベルは「2」
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#7fe7d76f" //適当に色変更してます
+  }
+}
