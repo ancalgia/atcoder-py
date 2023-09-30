@@ -5,7 +5,8 @@
   "python.linting.enabled": true,
   "python.linting.lintOnSave": true,
   "python.linting.flake8Enabled": true,
-  "python.sortImports.path": "isort",
+  // "python.sortImports.path": "isort",
+  // "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
   "python.linting.pylintEnabled": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
