@@ -1,16 +1,13 @@
-import numpy
-
-
 def main(case: str) -> None:
-    N, K = case.split()
+    N, score = case.splitlines()
 
-    currnumpy = N
+    scores = list(map(int, score.split()))
 
-    for _ in range(int(K)):
-        currnumpy = numpy.base_repr(int(currnumpy, 8), 9).replace("8", "5", -1)
+    scores.sort()
 
-    # print(curr)
-    print(currnumpy)
+    filtered = scores[int(N) : -int(N)]
+
+    print(sum(filtered) / (3 * int(N)))
 
 
 if __file__.endswith("Main.py"):
@@ -20,29 +17,21 @@ if __file__.endswith("Main.py"):
     main(case)
     exit()
 
+
 else:
     print("テスト")
     from textwrap import dedent
 
     test_list: list[str] = [
         """
-21 1
+        1
+        10 100 20 50 30
         """,
         """
-1330 1
-        """,
-        """
-2311640221315 15
-        """,
-        """
-77777777777777777777 1
-        """,
-        """
-77777777777777777777 50
+        2
+        4 3 3 3 5 6 7 8 99 100
         """,
     ]
-    # 7611555242456545770
-    # 40
 
     dd = dedent
 

@@ -1,16 +1,11 @@
-import numpy
-
-
 def main(case: str) -> None:
-    N, K = case.split()
+    x, *y = case.splitlines()
 
-    currnumpy = N
+    for idx, hoge in enumerate(y):
+        if idx % 2 == 1:
+            num_list = list(map(int, hoge.split()))
 
-    for _ in range(int(K)):
-        currnumpy = numpy.base_repr(int(currnumpy, 8), 9).replace("8", "5", -1)
-
-    # print(curr)
-    print(currnumpy)
+            print(len([x for x in num_list if x % 2 == 1]))
 
 
 if __file__.endswith("Main.py"):
@@ -20,29 +15,31 @@ if __file__.endswith("Main.py"):
     main(case)
     exit()
 
+
 else:
     print("テスト")
     from textwrap import dedent
 
     test_list: list[str] = [
         """
-21 1
+        4
+        3
+        1 2 3
+        2
+        20 23
+        10
+        6 10 4 1 5 9 8 6 5 1
+        1
+        1000000000
         """,
-        """
-1330 1
-        """,
-        """
-2311640221315 15
-        """,
-        """
-77777777777777777777 1
-        """,
-        """
-77777777777777777777 50
-        """,
+        # """
+        # 4
+        # 2023
+        # Year
+        # New
+        # Happy
+        # """,
     ]
-    # 7611555242456545770
-    # 40
 
     dd = dedent
 
