@@ -1,16 +1,34 @@
-import numpy
-
-
 def main(case: str) -> None:
     NK, *ab = case.splitlines()
 
     N, K = map(int, NK.split())
 
-    #     a
-    # aaa
-    # a
-    # print(curr)
-    # print(currnumpy)
+    large_list = sorted([sorted(map(int, x.split()), reverse=True)[0] for x in ab])
+
+    count = 0
+
+    current = -1
+
+    already_exists = True
+
+    for num in large_list:
+        if current == num:
+            # 同じ数字
+            already_exists = True
+
+        else:
+            # 数字変わった
+            current = num
+            if not already_exists:
+                count += 1
+
+            already_exists = False
+            continue
+
+    if not already_exists:
+        count += 1
+
+    print(count)
 
 
 if __file__.endswith("Main.py"):
