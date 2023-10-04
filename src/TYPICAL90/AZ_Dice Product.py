@@ -20,10 +20,9 @@ def magic_prod(l) -> int:
 def main(case: str) -> None:
     N, *As = [list(map(int, x.split())) for x in case.splitlines()]
 
-    all_patterns = list(itertools.product(*As))
+    calced_As = [sum(x) for x in As]
 
-    # all_scores = sum([math.prod(x) % magic_num for x in all_patterns]) % magic_num
-    all_scores = sum([magic_prod(x) for x in all_patterns]) % magic_num
+    all_scores = magic_prod(calced_As)
 
     print(all_scores)
 

@@ -6,7 +6,6 @@ import math
 def main(case: str) -> None:
     T, LXY, Q, *Es = case.splitlines()
 
-    T_minutes = int(T)
     L_height, X, Y = map(int, LXY.split())
 
     questions = map(int, Es)
@@ -16,8 +15,6 @@ def main(case: str) -> None:
     def get_position(min: int) -> tuple[float, float, float]:
         hoge = math.modf(min / int(T))[0]
 
-        # print(hoge)
-
         if hoge > 0.5:
             pass
             position = (0, L_height * (hoge - 0.5) * 2, L_height * (hoge - 0.5) * 2)
@@ -26,16 +23,15 @@ def main(case: str) -> None:
         else:
             position = (0, -L_height * hoge * 2, L_height * hoge * 2)
             pass
-        # print(position)
+
         return position
 
     def print_kakudo(me: tuple[float, float, float]):
-        distance = math.sqrt(abs(chokudai_position[0] - me[0]) + abs(chokudai_position[1] - me[1]))
+        # distance = math.sqrt(abs(chokudai_position[0] - me[0]) ** 2 + abs(chokudai_position[1] - me[1]) ** 2)
+        distance = math.sqrt(abs(chokudai_position[0]) ** 2 + abs(chokudai_position[1] - me[1]) ** 2)
 
-        print(math.degrees(math.atan2(distance, me[2])))
         print(math.degrees(math.atan2(me[2], distance)))
-
-        # return 0
+        print(math.degrees(math.atan2(distance, me[2])))
 
     for x in questions:
         position = get_position(x)
