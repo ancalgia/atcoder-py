@@ -10,55 +10,38 @@ def main(case: str) -> None:
 
     N, Q = NQ
 
-    # calced_As = [sum(x) for x in As]
+    outputs: list[int] = []
 
-    # matrix = [[0] * N] * Q
-    matrix = [[0 for _ in range(N)] for _x in range(Q)]
+    curr_position = As
 
-    for i1, us in enumerate(Upshifts):
-        for i2 in range(us[0] - 1, us[1]):
-            matrix[i1][i2] += us[2]
+    # スライドさせてまとめて計算
+    curr_fuben: list[int] = [r - l for l, r in zip(curr_position, curr_position[1:])]
 
-    pass
+    curr_total_fuben = sum([abs(x) for x in curr_fuben])
 
-    all_position_matrix = [As] + matrix
+    for upshift in Upshifts:
+        l_diff = 0
+        r_diff = 0
 
-    all_fuben_matrix = [[0 for _ in range(N - 1)] for _x in range(Q + 1)]
+        if upshift[0] != 1:
+            tgt = curr_fuben[upshift[0] - 2]
 
-    current_pos = 0
+            l_diff = abs(tgt + upshift[2]) - abs(tgt)
 
-    for hogedex, hoge in enumerate(all_position_matrix):
-        pass
+            curr_fuben[upshift[0] - 2] += upshift[2]
 
-        for fugadex, fuga in enumerate(hoge):
-            if fugadex == 0:
-                current_pos = fuga
+        if upshift[1] != N:
+            tgt = curr_fuben[upshift[1] - 1]
 
-            else:
-                all_fuben_matrix[hogedex][fugadex - 1] = fuga - current_pos
-                current_pos = fuga
+            r_diff = abs(tgt - upshift[2]) - abs(tgt)
 
-    pass
+            curr_fuben[upshift[1] - 1] -= upshift[2]
 
-    current_fuben = []
+        curr_total_fuben += l_diff + r_diff
 
-    for afdex, af in enumerate(all_fuben_matrix):
-        pass
-        if afdex == 0:
-            current_fuben = af.copy()
+        outputs.append(curr_total_fuben)
 
-        else:
-            for curdex, curr in enumerate(current_fuben):
-                curr += af[curdex]
-
-            print(sum(map(abs, *current_fuben)))
-
-    # for fugadex, x in enumerate(As):
-    #     current_pos = 0
-
-    #     current_fubens[fugadex] = x
-
-    # print(all_scores)
+    [print(x) for x in outputs]
 
 
 if __file__.endswith("Main.py"):
