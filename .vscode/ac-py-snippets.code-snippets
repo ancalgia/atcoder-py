@@ -1,0 +1,51 @@
+{
+  // Place your ac-py ワークスペース snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  "複数行の入力 ⇒ 全部intの二次元配列": {
+    "scope": "python",
+    "prefix": "sni_to_all_int_matrix",
+    "body": ["[list(map(int, x.split())) for x in case.splitlines()]"],
+    "description": "複数行の入力 ⇒ 全部intの二次元配列"
+  },
+  "1行の入力 ⇒ int配列": {
+    "scope": "python",
+    "prefix": "sni_to_all_int_1_row",
+    "body": ["list(map(int, case.split()))"],
+    "description": "1行の入力 ⇒ int配列"
+  },
+  "素因数分解": {
+    "scope": "python",
+    "prefix": "sni_factorization",
+    "body": [
+      "# 素因数分解",
+      "def factorization(n: int) -> list[list[int]]:",
+      "    arr: list[list[int]] = []",
+      "    temp = n",
+      "    for i in range(2, int(-(-(n**0.5) // 1)) + 1):",
+      "        if temp % i == 0:",
+      "            cnt = 0",
+      "            while temp % i == 0:",
+      "                cnt += 1",
+      "                temp //= i",
+      "            arr.append([i, cnt])",
+      "    if temp != 1:",
+      "        arr.append([temp, 1])",
+      "    if arr == []:",
+      "        arr.append([n, 1])",
+      "    return arr",
+      ""
+    ],
+    "description": "素因数分解"
+  },
+  "シンプル内包表記": {
+    "scope": "python",
+    "prefix": "sni_xforxin",
+    "body": ["[x for x in $1]"],
+    "description": "シンプル内包表記"
+  }
+}

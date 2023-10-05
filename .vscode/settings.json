@@ -1,7 +1,7 @@
 {
   "editor.defaultFormatter": null,
   "editor.formatOnSave": true,
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "python.linting.enabled": true,
   "python.linting.lintOnSave": true,
   "python.linting.flake8Enabled": true,
@@ -12,7 +12,8 @@
     "source.organizeImports": true
   },
   "[python]": {
-    "editor.tabSize": 4 // インデントレベルは「2」
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.black-formatter" // インデントレベルは「2」
   },
   "python.analysis.typeCheckingMode": "basic",
   "workbench.colorCustomizations": {
