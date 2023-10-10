@@ -1,6 +1,6 @@
 import bisect
-import itertools
 import math
+import itertools
 
 
 def main(case: str) -> None:

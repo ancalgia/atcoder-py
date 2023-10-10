@@ -1,12 +1,15 @@
-import math
+# import bisect
 
 
 def main(case: str) -> None:
-    H, W = map(int, case.split())
+    S = case
 
-    a = math.ceil(H / 2) * math.ceil(W / 2)
+    arr = [x for idx, x in enumerate(S) if idx % 2 == 1 and x != "0"]
 
-    print(a if H != 1 and W != 1 else H * W)
+    if len(arr) == 0:
+        print("Yes")
+    else:
+        print("No")
 
 
 if __file__.endswith("Main.py"):
@@ -22,13 +25,13 @@ else:
 
     test_list: list[str] = [
         """
-2 3
+1000 15 80
         """,
         """
-3 4
+2000 20 100
         """,
         """
-3 6
+10000 1 1
         """,
     ]
 

@@ -1,19 +1,11 @@
+# import bisect
+
+
 def main(case: str) -> None:
-    N, *Ss = case.splitlines()
+    D,T,S = list(map(int, case.split()))
 
-    already_existed_set: set = set()
-    already_rejected_set: set = set()
 
-    for idx, x in enumerate(Ss):
-        if x in already_rejected_set:
-            continue
-
-        if x in already_existed_set:
-            already_rejected_set.add(x)
-            continue
-
-        already_existed_set.add(x)
-        print(idx + 1)
+    print("Yes" if D <=T*S else "No")
 
 
 if __file__.endswith("Main.py"):
@@ -29,32 +21,13 @@ else:
 
     test_list: list[str] = [
         """
-5
-e869120
-atcoder
-e869120
-square1001
-square1001
+1000 15 80
         """,
         """
-4
-taro
-hanako
-yuka
-takashi
+2000 20 100
         """,
         """
-10
-square869120
-square869120
-square869120
-square869120
-square869120
-square869120
-square869120
-square869120
-square869120
-square869120
+10000 1 1
         """,
     ]
 

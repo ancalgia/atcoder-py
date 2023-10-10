@@ -2,24 +2,35 @@ import bisect
 import itertools
 import math
 
+MOD = 1000000007
+
+
+def mod_m(a: int) -> int:
+    return a % MOD
+
+
+def mod_div(a, b):
+    return ((a % MOD) * pow(b, MOD - 2, MOD)) % MOD
+
 
 def main(case: str) -> None:
-    N, L = list(map(int, case.split()))
+    NM, As, *Ss = case.splitlines()
 
-    max_jump = N // L
+    N, M = map(int, NM.split())
 
-    pattern_count = 0
+    AList = list(map(int, As.split()))
 
-    for x in range(max_jump + 1):
-        single_steps = N - L * x
 
-        moves = single_steps + x
+    for x in Ss:
+        
 
-        pattern_count += math.comb(moves, single_steps)
 
-    magic_num = 10**9 + 7
 
-    print(pattern_count if pattern_count < magic_num else pattern_count % magic_num)
+    total = 0
+    for x in Alist:
+        total += mod_m(x * (Asum - x))
+
+    print(mod_div(mod_m(total), 2))
 
 
 if __file__.endswith("Main.py"):
@@ -35,16 +46,31 @@ else:
 
     test_list: list[str] = [
         """
-3 2        
+3 4
+1000 500 700 2000
+xxxo
+ooxx
+oxox
         """,
         """
-4 4
+5 5
+1000 1500 2000 2000 2500
+xxxxx
+oxxxx
+xxxxx
+oxxxx
+oxxxx
         """,
         """
-5 2
-        """,
-        """
-6783 125
+7 8
+500 500 500 500 500 500 500 500
+xxxxxxxx
+oxxxxxxx
+ooxxxxxx
+oooxxxxx
+ooooxxxx
+oooooxxx
+ooooooxx
         """,
     ]
 

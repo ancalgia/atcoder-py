@@ -1,6 +1,6 @@
 import bisect
-import itertools
 import math
+import itertools
 
 magic_num = 10**9 + 7
 

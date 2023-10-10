@@ -1,16 +1,27 @@
-import bisect
-import itertools
-import math
+# import bisect
 
 
 def main(case: str) -> None:
-    N, M = list(map(int, case.split()))
+    S,T = case.splitlines()
 
-    lcm = math.lcm(N, M)
+    max = len(T)
 
-    print(lcm if lcm <= 10**18 else "Large")
+    try:    
+        for x in range(len(S)):
 
+            counter = len(T)        
+            for y in range(len(T)):
+                if S[x+y] == T[y]:
+                    counter -=1 
+            
+            if counter <max:
+                max = counter        
+        
+        print (max)
 
+    except:
+        print(max)
+        
 if __file__.endswith("Main.py"):
     import sys
 
@@ -24,14 +35,16 @@ else:
 
     test_list: list[str] = [
         """
-4 6
+cabacc
+abc
         """,
         """
-1000000000000000000 3
+codeforces
+atcoder
         """,
-        """
-1000000000000000000 1
-        """,
+#         """
+# 10000 1 1
+#         """,
     ]
 
     dd = dedent

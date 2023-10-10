@@ -1,25 +1,23 @@
+# import bisect
+
+
 def main(case: str) -> None:
-    NK, A, B = case.splitlines()
+    N, *Ss = case.splitlines()
 
-    N, K = map(int, NK.split())
+    win_idx_list = []
 
-    As = list(map(int, A.split()))
-    Bs = list(map(int, B.split()))
+    for idx, x in enumerate(Ss):
+        curr = [0, 0]
 
-    diffs = 0
+        curr[0] = x.count("o")
+        curr[1] = idx + 1
 
-    for x in range(N):
-        diffs += abs(As[x] - Bs[x])
+        win_idx_list.append(curr.copy())
 
-    if K < diffs:
-        print("No")
-        return
+    sorted_list = sorted(win_idx_list, key=lambda x: (-(x[0]), x[1]))
 
-    if K % 2 != diffs % 2:
-        print("No")
-        return
-
-    print("Yes")
+    # print(sorted_list)
+    [print(x[1]) for x in sorted_list]
 
 
 if __file__.endswith("Main.py"):
@@ -35,20 +33,24 @@ else:
 
     test_list: list[str] = [
         """
-2 5
-1 3
-2 1
+3
+-xx
+o-x
+oo-
         """,
         """
-3 1
-7 8 9
-7 8 9
+7
+-oxoxox
+x-xxxox
+oo-xoox
+xoo-ooo
+ooxx-ox
+xxxxx-x
+oooxoo-
         """,
-        """
-7 999999999
-3 1 4 1 5 9 2
-1 2 3 4 5 6 7
-        """,
+        #         """
+        # 10000 1 1
+        #         """,
     ]
 
     dd = dedent

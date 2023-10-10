@@ -1,27 +1,30 @@
+import bisect
 import itertools
+import math
+
+MOD = 1000000007
+
+
+def mod_m(a: int) -> int:
+    return a % MOD
+
+def mod_div(a, b):
+    return ((a % MOD) * pow(b, MOD - 2, MOD)) % MOD
 
 
 def main(case: str) -> None:
-    NPQ, A = case.splitlines()
+    N, As = case.splitlines()
 
-    N, P, Q = map(int, NPQ.split())
+    Alist = list(map(int, As.split()))
 
-    As = map(int, A.split())
+    Asum = sum(Alist)
 
-    selections = itertools.combinations(As, 5)
+    total = 0
+    for x in Alist:
+        total +=mod_m( x *(Asum - x))
+        
 
-    count = 0
-
-    for x in selections:
-        # prod = math.prod(x)
-        # amari = ((x[0] % P) * (x[1] % P) * (x[2] % P) * (x[3] % P) * (x[4] % P)) % P
-        amari = x[0] % P * x[1] % P * x[2] % P * x[3] % P * x[4] % P
-
-        if amari == Q:
-            count += 1
-
-    print(count)
-
+    print(mod_div(mod_m(total),2))
 
 if __file__.endswith("Main.py"):
     import sys
@@ -36,12 +39,12 @@ else:
 
     test_list: list[str] = [
         """
-6 7 1
-1 2 3 4 5 6
+3
+1 2 3 
         """,
         """
-10 1 0
-0 0 0 0 0 0 0 0 0 0
+4
+141421356 17320508 22360679 244949
         """,
     ]
 
