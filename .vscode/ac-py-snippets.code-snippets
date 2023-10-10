@@ -47,5 +47,11 @@
     "prefix": "sni_xforxin",
     "body": ["[x for x in $1]"],
     "description": "シンプル内包表記"
+  },
+  "配列間の差を取得(N-1の配列を返す)": {
+    "scope": "python",
+    "prefix": "sni_slide_diff_list",
+    "body": ["[r - l for l, r in zip(tgtlist, tgtlist[1:])]"],
+    "description": "配列間の差を取得"
   }
 }
