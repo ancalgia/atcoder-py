@@ -1,32 +1,17 @@
-import bisect
 import itertools
-import math
-
-MOD = 1000000007
-
-
-def mod_m(a: int) -> int:
-    return a % MOD
-
-
-def mod_div(a, b):
-    return ((a % MOD) * pow(b, MOD - 2, MOD)) % MOD
 
 
 def main(case: str) -> None:
-    NM, As, *Ss = case.splitlines()
+    AD, *rest = case.splitlines()
 
-    N, M = map(int, NM.split())
+    A, D = list(map(int, AD.split()))
 
-    AList = list(map(int, As.split()))
+    if A >= D:
+        D += 1
+    else:
+        A += 1
 
-    # for x in Ss:
-
-    # total = 0
-    # for x in Alist:
-    #     total += mod_m(x * (Asum - x))
-
-    print(mod_div(mod_m(total), 2))
+    print(A * D)
 
 
 if __file__.endswith("Main.py"):
@@ -36,37 +21,20 @@ if __file__.endswith("Main.py"):
     main(case)
     exit()
 
+
 else:
     print("テスト")
     from textwrap import dedent
 
     test_list: list[str] = [
         """
-3 4
-1000 500 700 2000
-xxxo
-ooxx
-oxox
+31 87
         """,
         """
-5 5
-1000 1500 2000 2000 2500
-xxxxx
-oxxxx
-xxxxx
-oxxxx
-oxxxx
+101 65
         """,
         """
-7 8
-500 500 500 500 500 500 500 500
-xxxxxxxx
-oxxxxxxx
-ooxxxxxx
-oooxxxxx
-ooooxxxx
-oooooxxx
-ooooooxx
+3 3
         """,
     ]
 
