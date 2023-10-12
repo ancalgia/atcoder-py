@@ -3,17 +3,26 @@ import itertools
 
 
 def main(case: str) -> None:
-    (N,), As = [list(map(int, x.split())) for x in case.splitlines()]
+    NQ, S, *rest = case.splitlines()
 
-    existCounter = collections.Counter(As).most_common()
+    N, Q = list(map(int, NQ.split()))
 
-    result = 0
+    queries = [list(map(int, x.split())) for x in rest]
 
-    for c1 in existCounter:
-        for c2 in existCounter:
-            result += ((c1[0] - c2[0]) ** 2) * c1[1] * c2[1]
+    SS = S + S
 
-    print(result // 2)
+    indicator = N
+
+    for x in queries:
+        if x[0] == 1:
+            indicator -= x[1]
+        else:
+            while indicator < N:
+                indicator += N
+
+            indicator -= N
+
+            print(SS[indicator + x[1] - 1])
 
 
 if __file__.endswith("Main.py"):
@@ -30,12 +39,23 @@ else:
 
     test_list: list[str] = [
         """
-3
-2 8 4 4 4 4 
+3 3
+abc
+2 2
+1 1
+2 2
         """,
         """
-5
--5 8 9 -4 -3
+10 8
+dsuccxulnl
+2 4
+2 7
+1 2
+2 7
+1 1
+1 2
+1 3
+2 5
         """,
     ]
 

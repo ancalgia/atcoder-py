@@ -5,15 +5,20 @@ import itertools
 def main(case: str) -> None:
     (N,), As = [list(map(int, x.split())) for x in case.splitlines()]
 
-    existCounter = collections.Counter(As).most_common()
+    revSet = sorted(set(As), reverse=True)
 
-    result = 0
+    AsCountDict: dict[int, int] = dict()
 
-    for c1 in existCounter:
-        for c2 in existCounter:
-            result += ((c1[0] - c2[0]) ** 2) * c1[1] * c2[1]
+    for idx, x in enumerate(revSet):
+        AsCountDict[x] = idx
 
-    print(result // 2)
+    counts = [AsCountDict[x] for x in As]
+
+    counterDict = dict(collections.Counter(counts))
+
+    pass
+    for k in range(N):
+        print(counterDict.get(k, 0))
 
 
 if __file__.endswith("Main.py"):
@@ -30,12 +35,16 @@ else:
 
     test_list: list[str] = [
         """
-3
-2 8 4 4 4 4 
+6
+2 7 1 8 2 8
         """,
         """
-5
--5 8 9 -4 -3
+1
+1
+        """,
+        """
+10
+979861204 57882493 979861204 447672230 644706927 710511029 763027379 710511029 447672230 136397527
         """,
     ]
 

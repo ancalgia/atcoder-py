@@ -3,17 +3,20 @@ import itertools
 
 
 def main(case: str) -> None:
-    (N,), As = [list(map(int, x.split())) for x in case.splitlines()]
+    N, X, Y = list(map(int, case.split()))
 
-    existCounter = collections.Counter(As).most_common()
+    matrix: list[list[int]] = [[1 if x == 0 else 0, 0] for x in range(N)]
 
-    result = 0
+    for idx in range(N - 1):
+        matrix[idx + 1][0] += matrix[idx][0]
 
-    for c1 in existCounter:
-        for c2 in existCounter:
-            result += ((c1[0] - c2[0]) ** 2) * c1[1] * c2[1]
+        matrix[idx][1] += matrix[idx][0] * X
 
-    print(result // 2)
+        matrix[idx + 1][0] += matrix[idx][1]
+
+        matrix[idx + 1][1] += matrix[idx][1] * Y
+
+    print(matrix[-1][-1])
 
 
 if __file__.endswith("Main.py"):
@@ -30,12 +33,13 @@ else:
 
     test_list: list[str] = [
         """
-3
-2 8 4 4 4 4 
+2 3 4
         """,
         """
-5
--5 8 9 -4 -3
+1 5 5
+        """,
+        """
+10 5 5
         """,
     ]
 
