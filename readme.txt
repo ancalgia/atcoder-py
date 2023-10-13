@@ -61,6 +61,11 @@ acc new abc324 --template python
 ```
 $ oj t -c "pypy3 main.py"
 ```
+↓こっちかも
+```
+$ oj t -c "python main.py"
+```
+
 
 ## SUBMIT
 
