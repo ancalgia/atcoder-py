@@ -53,5 +53,17 @@
     "prefix": "sni_slide_diff_list",
     "body": ["[r - l for l, r in zip(tgtlist, tgtlist[1:])]"],
     "description": "配列間の差を取得"
+  },
+  "print Yes": {
+    "scope": "python",
+    "prefix": "sni_print_Yes",
+    "body": ["print(\"Yes\")"],
+    "description": "print Yes"
+  },
+  "print No": {
+    "scope": "python",
+    "prefix": "sni_print_No",
+    "body": ["print(\"No\")"],
+    "description": "print No"
   }
 }
