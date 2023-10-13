@@ -65,5 +65,11 @@
     "prefix": "sni_print_No",
     "body": ["print(\"No\")"],
     "description": "print No"
+  },
+  "デバッグ用の入力文字列設定": {
+    "scope": "python",
+    "prefix": "sni_debug_input",
+    "body": ["from textwrap import dedent", "", "case = dedent(", "    \"\"\"", "8888", "    \"\"\"", ").strip()"],
+    "description": "素因数分解"
   }
 }
