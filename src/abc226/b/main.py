@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *Ls = IALL(case)
+
+    suretuList = [y for x, *y in Ls]
+
+    setSuretu = set(map(tuple, suretuList))
+
+    print(len(setSuretu))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

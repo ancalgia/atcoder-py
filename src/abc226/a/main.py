@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 
-import bisect, collections, copy, heapq, itertools, math, string  # isort: skip
+import bisect
+import collections
+import copy
+import heapq
+import itertools
+import math
+import string
 import sys
+
+import decimal  # isort: skip
 
 
 # fmt: off
@@ -15,10 +23,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = math.floor(float(case.strip()))
 
-    pass
+    # print(int(case.strip()[-3]))
+
+    if int(case.strip()[-3]) >= 5:
+        N += 1
+
+    print(N)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
