@@ -1,7 +1,20 @@
-import itertools
+#!/usr/bin/env python3
+
+import bisect, collections, copy, heapq, itertools, math, string  # isort: skip
+import sys
 
 
-def main(case: str) -> None:
+# fmt: off
+def SL(s: str) -> list[str]: return s.splitlines()
+def IL(s: str) -> list[int]: return list(map(int, s.split()))
+def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in s.splitlines()]
+# fmt: on
+
+
+case: str = "".join([x for x in sys.stdin])
+
+
+def main():
     N = case
 
     sortedNums = sorted([*N], reverse=True)
@@ -35,36 +48,5 @@ def main(case: str) -> None:
     print(leftNum * rightNum)
 
 
-if __file__.endswith("Main.py"):
-    import sys
-
-    case: str = "".join([x for x in sys.stdin])
-    main(case)
-    exit()
-
-
-else:
-    print("テスト")
-    from textwrap import dedent
-
-    test_list: list[str] = [
-        """
-123
-        """,
-        """
-1121
-        """,
-        """
-998244353
-        """,
-    ]
-
-    dd = dedent
-
-    formatted_test_list = [dd(x).strip() for x in test_list]
-
-    for test in formatted_test_list:
-        print("##########テスト入力##########")
-        print(test)
-        print("   vvvvvvvv出力結果vvvvvvvv")
-        main(test)
+if __name__ == "__main__":
+    main()
