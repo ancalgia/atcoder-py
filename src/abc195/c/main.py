@@ -15,30 +15,9 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    (N,), As, Bs = IALL(case)
+    N, *STs = SL(case)
 
-    roomTimes: list[int] = [-1 for x in range(N)]
-
-    roomTimes[0] = 0
-
-    estList: list[int] = []
-
-    for x in range(N):
-        estList.clear()
-
-        if x == 0:
-            continue
-
-        if x >= 1:
-            estList.append(roomTimes[x - 1] + As[x - 1])
-
-        if x >= 2:
-            estList.append(roomTimes[x - 2] + Bs[x - 2])
-
-        roomTimes[x] = min(estList)
     pass
-
-    print(roomTimes[-1])
 
 
 if __name__ == "__main__":
