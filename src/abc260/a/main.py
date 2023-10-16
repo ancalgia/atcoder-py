@@ -10,14 +10,24 @@ def IL(s: str) -> list[int]: return list(map(int, s.split()))
 def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in s.splitlines()]
 # fmt: on
 
+
 case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *_ = SL(case)
 
-    pass
+    countN = collections.Counter(N)
+
+    for x in countN:
+        hoge = countN[x]
+
+        if hoge == 1:
+            print(x)
+            return
+
+    print(-1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
