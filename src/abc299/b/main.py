@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, T), Cs, Rs = IALL(case)
 
-    pass
+    CRs = set([x for x in enumerate(zip(Cs, Rs), 1)])
+
+    tgt = T if T in Cs else Cs[0]
+
+    currMax = 0
+
+    currWin = 0
+
+    for x in CRs:
+        if x[1][0] == tgt:
+            if currMax < x[1][1]:
+                currMax = x[1][1]
+                currWin = x[0]
+
+    print(currWin)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

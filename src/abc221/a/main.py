@@ -15,18 +15,11 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    S, T = SL(case)
+    A, B = IL(case)
 
-    cnt = 0
+    diff = A - B
 
-    for x in zip(S, T):
-        if x[0] != x[1]:
-            cnt += 1
-
-    if cnt == 2 or cnt == 1:
-        print("Yes")
-    else:
-        print("No")
+    print(32**diff)
 
 
 if __name__ == "__main__":
