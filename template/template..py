@@ -15,17 +15,9 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    (N,), *Qs = IALL(case)
+    N, *STs = SL(case)
 
-    tutu: collections.deque[int] = collections.deque()
-
-    for q in Qs:
-        if q[0] == 1:
-            tutu.extendleft([q[1]] * q[2])
-        else:
-            pass
-            ballSum = sum([tutu.pop() for x in range(q[1])])
-            print(ballSum)
+    pass
 
 
 if __name__ == "__main__":

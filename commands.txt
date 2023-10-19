@@ -1,4 +1,4 @@
-acc new abc044 --template 
+acc new abc044 --template python
 
 oj t -c "python main.py"
 
