@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    R, C = IL(case)
+
+    distR = abs(8 - R)
+
+    distC = abs(8 - C)
+
+    checker = max([distR, distC])
+
+    if checker % 2 == 0:
+        print("white")
+    else:
+        print("black")
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

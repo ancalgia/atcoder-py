@@ -15,10 +15,19 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (H, W), *matrix = IALL(case)
 
-    pass
+    flat = list(itertools.chain.from_iterable(matrix))
+
+    small = min(flat)
+
+    result = 0
+
+    for x in flat:
+        result += x - small
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

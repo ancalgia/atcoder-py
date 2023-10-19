@@ -15,10 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    L, R = IL(case)
 
-    pass
+    print("atcoder"[L - 1 : R])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

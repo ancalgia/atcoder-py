@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, K), Hs = IALL(case)
 
-    pass
+    leftMonsters = N - K
+
+    if leftMonsters <= 0:
+        print(0)
+        return
+
+    sortedHs = sorted(Hs)
+
+    print(sum(sortedHs[:leftMonsters]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

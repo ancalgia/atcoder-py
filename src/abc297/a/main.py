@@ -15,10 +15,19 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, D), Ts = IALL(case)
 
-    pass
+    currTime = -(D * 2)
+
+    for x in Ts:
+        if x - currTime <= D:
+            print(x)
+            return
+
+        currTime = x
+
+    print(-1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

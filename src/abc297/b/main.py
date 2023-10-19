@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import bisect, collections, copy, heapq, itertools, math, string  # isort: skip
+import re
 import sys
 
 
@@ -15,10 +16,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S = case
 
-    pass
+    bIndex = [x.start() for x in re.finditer("B", S)]
+
+    if bIndex[0] % 2 == bIndex[1] % 2:
+        print("No")
+        return
+
+    rIndex = [x.start() for x in re.finditer("R", S)]
+    kIndex = [x.start() for x in re.finditer("K", S)]
+
+    if not (rIndex[0] < kIndex[0] < rIndex[1]):
+        print("No")
+        return
+
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,0 +1,7 @@
+acc new abc044 --template 
+
+oj t -c "python main.py"
+
+acc s main.py -- --guess-python-interpreter pypy
+
+git archive HEAD `git diff --name-only HEAD^ HEAD --diff-filter=ACMR` -o archive.zip

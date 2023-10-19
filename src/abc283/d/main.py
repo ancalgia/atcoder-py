@@ -14,7 +14,7 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
-# case = "(a(ba))"
+# case = "abca"
 
 
 def main():
@@ -33,26 +33,25 @@ def main():
         if counter[c] == 1:
             continue
 
-        tgtIdx: set[tuple[int, str]] = set([(x.start(), "X") for x in re.finditer(r"\)", S)])
+        tgtIdx: set[tuple[int, str]] = set([(x.start(), "X") for x in re.finditer(c, S)])
 
         checker = sorted((list(tgtIdx) + list(parenOpenIdx) + list(parenCloseIdx)))
 
         stringified = "".join([x[1] for x in checker])
 
         while True:
-            changed = re.sub(r"(\(X\)|\(\))", "", stringified)
+            changed = re.sub(r"\(\)", "", stringified)
 
             if stringified == changed:
                 break
 
             stringified = changed
 
-        if stringified == "" or stringified == "X":
-            continue
-
-        else:
+        if re.search(r"X[\(]*X", stringified):
             print("No")
             return
+        else:
+            continue
 
     # splittedByCloseParen = S.split(")")
 
