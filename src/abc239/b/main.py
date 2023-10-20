@@ -13,12 +13,32 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "-1"
+
 
 def main():
-    N, *STs = SL(case)
+    stripped = case.rstrip()
 
-    pass
+    N = int(case)
+
+    if len(str(abs(N))) == 1:
+        if N >= 0:
+            print(0)
+            return
+        else:
+            print(-1)
+            return
+
+    if N >= 0:
+        print(stripped[:-1])
+        return
+
+    else:
+        if stripped[-1] == "0":
+            print(stripped[:-1])
+        else:
+            print(int(stripped[:-1]) - 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

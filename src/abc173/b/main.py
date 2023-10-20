@@ -15,10 +15,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *Ss = SL(case)
 
-    pass
+    counter = collections.Counter(Ss)
+
+    ptn = ["AC", "WA", "TLE", "RE"]
+
+    for x in ptn:
+        print(f"{x} x {counter[x]}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

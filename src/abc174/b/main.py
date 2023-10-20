@@ -15,10 +15,20 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, D), *XYs = IALL(case)
 
-    pass
+    allDiff = [x**2 + y**2 for x, y in XYs]
+
+    result = 0
+
+    dist = D**2
+
+    for x in allDiff:
+        if x <= dist:
+            result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

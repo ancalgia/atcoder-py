@@ -13,9 +13,31 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "1000000"
+# case = "999999"
+# case = "1010"
+# case = "10000"
+
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
+
+    if N < 1000:
+        print(0)
+        return
+
+    d, m = divmod(len(str(N)), 3)
+
+    result = 0
+
+    for x in range(d):
+        result += x * 999 * (1000**x)
+        pass
+
+    # result += (d) * (N - (10 ** (len(str(N)) - 1)) + 1)
+    result += (d) * (N - (10 ** (d * 3)) + 1)
+
+    print(result)
 
     pass
 

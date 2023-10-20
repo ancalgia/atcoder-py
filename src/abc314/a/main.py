@@ -15,10 +15,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
+
+    pi1 = "3."
+    pi2 = "1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679"
+
+    print(pi1 + pi2[:N])
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

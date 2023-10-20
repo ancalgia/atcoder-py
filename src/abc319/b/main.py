@@ -13,12 +13,38 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "12"
+
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    yakusus = [x for x in range(1, 10) if N % x == 0]
+
+    allNdivJs = [N // x for x in yakusus]
+
+    zipped = list(zip(yakusus, allNdivJs))
+
+    result = ""
+
+    for x in range(N + 1):
+        if x == 0 or x == N:
+            result += str(1)
+            continue
+
+        validList = []
+
+        for y in zipped:
+            if x % y[1] == 0:
+                validList.append(y[0])
+
+        if len(validList) != 0:
+            result += str(validList[0])
+        else:
+            result += "-"
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

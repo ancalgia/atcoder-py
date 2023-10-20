@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    for x in As:
+        if x % 2 == 0:
+            if x % 3 != 0 and x % 5 != 0:
+                print("DENIED")
+                return
+
+    print("APPROVED")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

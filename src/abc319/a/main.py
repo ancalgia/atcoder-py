@@ -15,10 +15,35 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    pls = {
+        "tourist": 3858,
+        "ksun48": 3679,
+        "Benq": 3658,
+        "Um_nik": 3648,
+        "apiad": 3638,
+        "Stonefeang": 3630,
+        "ecnerwala": 3613,
+        "mnbvmar": 3555,
+        "newbiedmy": 3516,
+        "semiexp": 3481,
+        "tourist": 3858,
+        "ksun48": 3679,
+        "Benq": 3658,
+        "Um_nik": 3648,
+        "apiad": 3638,
+        "Stonefeang": 3630,
+        "ecnerwala": 3613,
+        "mnbvmar": 3555,
+        "newbiedmy": 3516,
+        "semiexp": 3481,
+    }
+
+    tgt = case.rstrip()
+
+    print(pls[tgt])
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
