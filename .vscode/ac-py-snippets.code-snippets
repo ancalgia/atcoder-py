@@ -42,16 +42,28 @@
     ],
     "description": "素因数分解"
   },
-  "シンプル内包表記": {
+  "シンプル内包表記X": {
     "scope": "python",
     "prefix": "sni_xforxin",
     "body": ["[x for x in $1]"],
-    "description": "シンプル内包表記"
+    "description": "シンプル内包表記X"
+  },
+  "シンプル内包表記Y": {
+    "scope": "python",
+    "prefix": "sni_yforyin",
+    "body": ["[y for y in $1]"],
+    "description": "シンプル内包表記Y"
+  },
+  "シンプル内包表記Z": {
+    "scope": "python",
+    "prefix": "sni_zforzin",
+    "body": ["[z for z in $1]"],
+    "description": "シンプル内包表記Z"
   },
   "配列間の差を取得(N-1の配列を返す)": {
     "scope": "python",
     "prefix": "sni_slide_diff_list",
-    "body": ["[r - l for l, r in zip(tgtlist, tgtlist[1:])]"],
+    "body": ["[right - left for left, right in zip(tgtlist, tgtlist[1:])]"],
     "description": "配列間の差を取得"
   },
   "print Yes": {
@@ -66,10 +78,43 @@
     "body": ["print(\"No\")"],
     "description": "print No"
   },
+  "print result": {
+    "scope": "python",
+    "prefix": "sni_print_result",
+    "body": ["print(result)"],
+    "description": "print result"
+  },
   "デバッグ用の入力文字列設定": {
     "scope": "python",
     "prefix": "sni_debug_input",
     "body": ["from textwrap import dedent", "", "case = dedent(", "    \"\"\"", "8888", "    \"\"\"", ").strip()"],
     "description": "素因数分解"
-  }
+  },
+  "等差数列の和1": {
+    "scope": "python",
+    "prefix": "sni_tosa_suretu1",
+    "body": ["sum(range(lower, upper))"],
+    "description": "等差数列"
+  },
+  "等差数列の和2": {
+    "scope": "python",
+    "prefix": "sni_tosa_suretu2",
+    "body": ["(count * (2 * start + (count - 1) * diff)) / 2"],
+    "description": "等差数列"
+  },
+  "等差数列の和3": {
+    "scope": "python",
+    "prefix": "sni_tosa_suretu3",
+    "body": ["(start + stop) * (count / 2)"],
+    "description": "等差数列"
+  },
+  "壁作成": {
+    "scope": "python",
+    "prefix": "sni_create_wall",
+    "body": [
+      "def createWall(matrix: list[list[str]], H: int, W: int, wall: str) -> list[list[str]]:", 
+      "  return [[wall] * (W + 2)] + [[wall] + x + [wall] for x in matrix] + [[wall] * (W + 2)]", 
+      ],
+    "description": "文字列マトリックスに指定した文字を壁として囲った新しいマトリックスを返す"
+  }, 
 }

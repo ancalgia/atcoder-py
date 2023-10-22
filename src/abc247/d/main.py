@@ -13,19 +13,44 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 2
+# 1 1000000000 1000000000
+# 2 1000000000
+#     """
+# ).strip()
+
 
 def main():
     (N,), *Qs = IALL(case)
 
-    tutu: collections.deque[int] = collections.deque()
+    tutu: collections.deque[list[int]] = collections.deque()
 
     for q in Qs:
         if q[0] == 1:
-            tutu.extendleft([q[1]] * q[2])
+            # tgt = [q[1]] * q[2]
+            tutu.appendleft([q[1], q[2]])
         else:
             pass
-            ballSum = sum([tutu.pop() for x in range(q[1])])
-            print(ballSum)
+
+            count = q[1]
+            ball = 0
+            while count != 0:
+                tgt = tutu[-1]
+                if tgt[1] >= count:
+                    ball += tgt[0] * count
+
+                    tutu[-1][1] -= count
+                    break
+                else:
+                    ball += tgt[0] * tgt[1]
+                    count -= tgt[1]
+                    tutu.pop()
+
+            print(ball)
 
 
 if __name__ == "__main__":
