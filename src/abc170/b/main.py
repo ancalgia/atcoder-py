@@ -15,10 +15,25 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    X, Y = IL(case)
 
-    pass
+    maxAsi = X * 4
+    minAsi = X * 2
+
+    if Y % 2 == 1:
+        print("No")
+        return
+
+    if Y > maxAsi:
+        print("No")
+        return
+
+    if Y < minAsi:
+        print("No")
+        return
+
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

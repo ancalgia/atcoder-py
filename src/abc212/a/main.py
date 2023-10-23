@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B = IL(case)
 
-    pass
+    if A == 0:
+        print("Silver")
+        return
+    if B == 0:
+        print("Gold")
+        return
+    print("Alloy")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

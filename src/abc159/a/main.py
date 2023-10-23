@@ -15,10 +15,13 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, M = IL(case)
 
-    pass
+    gugu = (N * (N - 1)) // 2
+    kiki = (M * (M - 1)) // 2
+
+    print(gugu + kiki)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

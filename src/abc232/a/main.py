@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
+
+    print(int(S[0]) * int(S[-1]))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
