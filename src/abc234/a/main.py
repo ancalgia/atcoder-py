@@ -12,13 +12,18 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 
 case: str = "".join([x for x in sys.stdin])
+# case = "0"
+
+
+def f(x: int) -> int:
+    return (x**2) + (x * 2) + 3
 
 
 def main():
-    N, *STs = SL(case)
+    t = int(case)
 
-    pass
+    print(f(f(f(t) + t) + f(f(t))))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
