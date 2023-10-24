@@ -15,10 +15,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    HW, *rest = SL(case)
+
+    H, W = map(int, HW.split())
+
+    martix = [list(x) for x in rest]
+
+    point = []
+
+    for x in range(H):
+        for y in range(W):
+            if martix[x][y] == "o":
+                point.append([x, y])
+
+    print(abs(point[0][0] - point[1][0]) + abs(point[0][1] - point[1][1]))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

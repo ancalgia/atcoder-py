@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S = case.rstrip()
+
+    caesar = str.maketrans("10", "01")
+
+    print(S.translate(caesar))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

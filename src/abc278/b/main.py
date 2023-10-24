@@ -13,12 +13,37 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "19 57"
+
 
 def main():
-    N, *STs = SL(case)
+    H, M = IL(case)
+
+    currentH = H
+    currentM = M
+
+    while True:
+        HStr = str(currentH).zfill(2)
+        MStr = str(currentM).zfill(2)
+
+        changedH = HStr[0] + MStr[0]
+        changedM = HStr[1] + MStr[1]
+
+        if int(changedH) <= 23 and int(changedM) <= 59:
+            print(f"{int(HStr)} {int(MStr)}")
+            return
+
+        if currentM != 59:
+            currentM += 1
+        else:
+            if currentH != 23:
+                currentH += 1
+            else:
+                currentH = 0
+            currentM = 0
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
