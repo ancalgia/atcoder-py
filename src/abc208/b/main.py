@@ -14,11 +14,29 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "119"
+
+
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    kokaList = [math.factorial(x + 1) for x in range(10)][::-1]
+
+    result = 0
+
+    rest = N
+
+    while True:
+        if rest == 0:
+            print(result)
+            return
+
+        for x in kokaList:
+            if rest >= x:
+                rest -= x
+                result += 1
+                break
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

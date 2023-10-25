@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    XY = case.rstrip()
 
-    pass
+    X, Y = XY[:-2], int(XY[-1:])
+
+    if Y <= 2:
+        print(X + "-")
+    elif Y <= 6:
+        print(X)
+    else:
+        print(X + "+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

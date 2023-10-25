@@ -15,10 +15,13 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B = IL(case)
 
-    pass
+    if A <= B <= A * 6:
+        print("Yes")
+    else:
+        print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
