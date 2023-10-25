@@ -15,10 +15,13 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S = case.rstrip()
 
-    pass
+    if S[0] == S[1] or S[1] == S[2] or S[2] == S[3]:
+        print("Bad")
+    else:
+        print("Good")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
