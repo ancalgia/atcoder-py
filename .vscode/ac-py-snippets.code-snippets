@@ -78,6 +78,13 @@
     "body": ["print(\"No\")"],
     "description": "print No"
   },
+  "print Yes No": {
+    "scope": "python",
+    "prefix": "sni_print_YN",
+    "body": ["print(\"Yes\") if condition else print(\"No\")"],
+    "description": "print YesNo"
+  },
+
   "print result": {
     "scope": "python",
     "prefix": "sni_print_result",
@@ -112,9 +119,9 @@
     "scope": "python",
     "prefix": "sni_create_wall",
     "body": [
-      "def createWall(matrix: list[list[str]], H: int, W: int, wall: str) -> list[list[str]]:", 
-      "  return [[wall] * (W + 2)] + [[wall] + x + [wall] for x in matrix] + [[wall] * (W + 2)]", 
-      ],
+      "def createWall(matrix: list[list[str]], H: int, W: int, wall: str) -> list[list[str]]:",
+      "  return [[wall] * (W + 2)] + [[wall] + x + [wall] for x in matrix] + [[wall] * (W + 2)]"
+    ],
     "description": "文字列マトリックスに指定した文字を壁として囲った新しいマトリックスを返す"
-  }, 
+  }
 }
