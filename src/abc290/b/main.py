@@ -15,10 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    NK, S = SL(case)
+
+    N, K = IL(NK)
+
+    result = ""
+
+    passed = 0
+
+    for s in S:
+        if s == "o" and passed < K:
+            result += "o"
+            passed += 1
+            continue
+        else:
+            result += "x"
+
+    print(result)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
