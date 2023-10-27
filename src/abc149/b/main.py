@@ -13,12 +13,18 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "10 10 100"
+
 
 def main():
-    N, *STs = SL(case)
+    A, B, K = IL(case)
 
-    pass
+    taka = max([A - K, 0])
+
+    aoki = max([B - max([K - A, 0]), 0])
+
+    print(f"{taka} {aoki}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

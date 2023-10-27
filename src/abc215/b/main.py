@@ -12,13 +12,24 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 
 case: str = "".join([x for x in sys.stdin])
+# case = "1200000000000000000"
+# case = "1152921504606844095"
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    # print(math.floor(math.log2(N)))
+
+    tmp = 0
+    while True:
+        if 2**tmp <= N:
+            tmp += 1
+            continue
+        else:
+            print(tmp - 1)
+            return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

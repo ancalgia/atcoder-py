@@ -15,10 +15,19 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C = IL(case)
 
-    pass
+    ABCCounter = collections.Counter([A, B, C])
+
+    if len(ABCCounter) == 3:
+        print(0)
+
+    elif len(ABCCounter) == 2:
+        print(ABCCounter.most_common()[-1][0])
+
+    else:
+        print(A)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
