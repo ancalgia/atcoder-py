@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
+
+    oddS = [x for idx, x in enumerate(S, 1) if idx % 2 == 1]
+    evenS = [x for idx, x in enumerate(S, 1) if idx % 2 == 0]
+
+    result: list[str] = []
+
+    for o, e in zip(oddS, evenS):
+        result.append(e)
+        result.append(o)
+
+    print("".join(result))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

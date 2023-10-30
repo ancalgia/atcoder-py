@@ -15,10 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C = IL(case)
 
-    pass
+    print("Yes") if A ** 2 + B**2 < C**2 else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

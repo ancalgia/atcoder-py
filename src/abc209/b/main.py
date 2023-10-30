@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, X), As = IALL(case)
 
-    pass
+    allPrice = sum(As)
+
+    discount = N // 2
+
+    print("Yes") if (allPrice - discount) <= X else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

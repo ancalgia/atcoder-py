@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C, D = IL(case)
+    L = A + B
+    R = C + D
 
-    pass
+    if L > R:
+        print("Left")
+    elif L < R:
+        print("Right")
+    else:
+        print("Balanced")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

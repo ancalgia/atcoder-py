@@ -14,11 +14,36 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 5
+# alice 31
+# bob 41
+# carol 5
+# dave 92
+# ellen 65
+#     """
+# ).strip()
+
+
 def main():
-    N, *STs = SL(case)
+    N, *SAs = SL(case)
+
+    SAs = [x.split() for x in SAs]
+
+    youngest = min([int(x[1]) for x in SAs])
+
+    youngIdx = [idx for idx, x in enumerate(SAs) if int(x[1]) == youngest][0]
+
+    withStart = SAs[youngIdx:] + SAs[:youngIdx]
+
+    for x in withStart:
+        print(x[0])
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

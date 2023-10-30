@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, X), *ABs = IALL(case)
 
-    pass
+    ableSet: set[int] = set({0})
+
+    for a, b in ABs:
+        tmpSet: set[int] = set()
+
+        for x in ableSet:
+            tmpSet.add(x + a)
+            tmpSet.add(x + b)
+
+        ableSet = tmpSet
+
+    print("Yes") if X in ableSet else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

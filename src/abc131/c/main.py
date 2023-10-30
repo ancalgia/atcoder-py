@@ -14,11 +14,20 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "10 40 6 8 "
+
+
 def main():
-    N, *STs = SL(case)
+    A, B, C, D = IL(case)
 
-    pass
+    divC = (B // C) - ((A - 1) // C)
+    divD = (B // D) - ((A - 1) // D)
+    divCD = (B // (math.lcm(C, D))) - ((A - 1) // math.lcm(C, D))
+
+    allCount = B - A + 1
+
+    print(allCount - divC - divD + divCD)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

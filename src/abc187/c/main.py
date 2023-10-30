@@ -15,10 +15,19 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *Ss = SL(case)
 
-    pass
+    SSet = set(Ss)
+
+    maybeUnhappy = [x for x in SSet if x[0] == "!"]
+
+    for x in maybeUnhappy:
+        if x[1:] in SSet:
+            print(x[1:])
+            return
+
+    print("satisfiable")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

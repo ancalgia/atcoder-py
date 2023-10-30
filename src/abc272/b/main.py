@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *Ks = IALL(case)
 
-    pass
+    sankaDict: dict[int, set[int]] = dict()
+
+    for x in range(1, N + 1):
+        sankaDict[x] = {x}
+
+    for k, *Xs in Ks:
+        for x in Xs:
+            sankaDict[x].update(Xs)
+
+    for x in sankaDict:
+        if len(sankaDict[x]) != N:
+            print("No")
+            return
+
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

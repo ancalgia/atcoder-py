@@ -15,10 +15,22 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), Xs = IALL(case)
 
-    pass
+    called: set[int] = set()
+
+    for n in range(1, N + 1):
+        if n not in called:
+            called.add(Xs[n - 1])
+
+    unCalled: list[int] = []
+    for x in range(1, N + 1):
+        if x not in called:
+            unCalled.append(x)
+
+    print(len(unCalled))
+    print(*unCalled)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

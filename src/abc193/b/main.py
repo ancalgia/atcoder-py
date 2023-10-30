@@ -13,12 +13,38 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 3
+# 3 9 5
+# 4 8 5
+# 5 7 5
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    (N,), *APXs = IALL(case)
+
+    lowest = 999999999999
+
+    for a, p, x in APXs:
+        available = a < x
+
+        if available:
+            lowest = min([lowest, p])
+
+    if lowest == 999999999999:
+        print(-1)
+        return
+
+    else:
+        print(lowest)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

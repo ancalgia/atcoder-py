@@ -15,10 +15,19 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *_ = SL(case)
+
+    lenN = len(N)
+
+    if lenN <= 3:
+        print(N)
+        return
+
+    else:
+        print(N[:3] + ("0" * (lenN - 3)))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

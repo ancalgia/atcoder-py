@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B = IL(case)
 
-    pass
+    strA = str(A).zfill(30)
+    strB = str(B).zfill(30)
+
+    for a, b in zip(strA, strB):
+        if int(a) + int(b) >= 10:
+            print("Hard")
+            return
+
+    print("Easy")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
