@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    ABCDE = IL(case)
 
-    pass
+    cardCounter = collections.Counter(ABCDE)
+
+    if len(cardCounter) != 2:
+        print("No")
+        return
+
+    print("Yes") if cardCounter.most_common()[0][1] in [2, 3] else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

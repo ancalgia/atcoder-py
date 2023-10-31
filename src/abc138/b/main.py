@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    gyakus = [1 / x for x in As]
+
+    gyakugyaku = 1 / sum(gyakus)
+
+    print(gyakugyaku)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

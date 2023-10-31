@@ -12,13 +12,21 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 
 case: str = "".join([x for x in sys.stdin])
+# case = 191
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    price = math.floor(N * 1.08)
+
+    if price < 206:
+        print("Yay!")
+    elif price == 206:
+        print("so-so")
+    else:
+        print(":(")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

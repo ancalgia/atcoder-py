@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (H, W), *matrix = IALL(case)
+
+    num2alpha = lambda c: chr(c + 64)
+
+    for x in matrix:
+        tmp = ["." if z == 0 else num2alpha(z) for z in x]
+        print("".join(tmp))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

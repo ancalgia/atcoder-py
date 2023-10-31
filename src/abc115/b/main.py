@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *Ps = SL(case)
 
-    pass
+    Ps = list(map(int, Ps))
+
+    Ps.sort(reverse=True)
+
+    Ps[0] = Ps[0] // 2
+
+    print(sum(Ps))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

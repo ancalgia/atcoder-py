@@ -14,11 +14,20 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "1 1000000000 100"
+
+
 def main():
-    N, *STs = SL(case)
+    A, B, K = IL(case)
 
-    pass
+    # seq = [x for x in range(A, B + 1)]
+
+    leAndRi = list(set([x for x in range(A, A + K)] + [x for x in range(B, B - K, -1)]))
+
+    leAndRi.sort()
+
+    [print(x) for x in leAndRi if A <= x <= B]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

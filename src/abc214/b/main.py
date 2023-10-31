@@ -13,12 +13,24 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "1 0"
+
 
 def main():
-    N, *STs = SL(case)
+    S, T = IL(case)
 
-    pass
+    possibles = [x for x in range(0, S + 1)]
+
+    allPtn = list(itertools.product(possibles, possibles, possibles))
+
+    result = 0
+
+    for a, b, c in allPtn:
+        if a + b + c <= S and a * b * c <= T:
+            result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

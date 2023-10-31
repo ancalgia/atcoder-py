@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), Ds = IALL(case)
 
-    pass
+    allPtn = itertools.combinations(Ds, 2)
+
+    result = 0
+
+    for x, y in allPtn:
+        result += x * y
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

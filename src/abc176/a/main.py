@@ -15,10 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, X, T = IL(case)
 
-    pass
+    print(math.ceil(N / X) * T)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

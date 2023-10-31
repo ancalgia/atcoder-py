@@ -15,10 +15,20 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    NM, *OXs = SL(case)
 
-    pass
+    allPtn = itertools.combinations(OXs, 2)
+
+    result = 0
+
+    for x in allPtn:
+        zipped = zip(*x)
+
+        if all([True if y[0] == "o" or y[1] == "o" else False for y in zipped]):
+            result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

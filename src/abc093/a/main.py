@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
+
+    SSet = set(S)
+
+    print("Yes") if len(SSet) == 3 else print("No")
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *_ = SL(case)
+
+    sumN = sum([int(x) for x in N])
+
+    print("Yes") if sumN % 9 == 0 else print("No")
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

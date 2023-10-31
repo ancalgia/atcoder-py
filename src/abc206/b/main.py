@@ -15,10 +15,31 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    le = 1
+    ri = N
+
+    while True:
+        if le == ri:
+            print(le)
+            return
+
+        tgt = (le + ri) // 2
+
+        today = ((1 + tgt) * tgt) // 2
+
+        if today < N:
+            if ri - le == 1:
+                le += 1
+            else:
+                le = tgt
+        else:
+            if ri - le == 1:
+                ri -= 1
+            else:
+                ri = tgt
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

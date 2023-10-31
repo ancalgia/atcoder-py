@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    oddStr = "".join([x for idx, x in enumerate(S) if idx % 2 == 0])
+    evenStr = "".join([x for idx, x in enumerate(S) if idx % 2 == 1])
+
+    if oddStr == oddStr.lower() and evenStr == evenStr.upper():
+        print("Yes")
+    else:
+        print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    D = int(case)
+
+    diff = 25 - D
+
+    print(f"Christmas{' Eve'*diff}")
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

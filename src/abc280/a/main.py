@@ -15,10 +15,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    HW, *rest = SL(case)
 
-    pass
+    result = 0
+
+    for x in rest:
+        result += x.count("#")
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
