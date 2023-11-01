@@ -11,27 +11,7 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
-# 素因数分解
-def factorization(n: int) -> list[list[int]]:
-    arr: list[list[int]] = []
-    temp = n
-    for i in range(2, int(-(-(n**0.5) // 1)) + 1):
-        if temp % i == 0:
-            cnt = 0
-            while temp % i == 0:
-                cnt += 1
-                temp //= i
-            arr.append([i, cnt])
-    if temp != 1:
-        arr.append([temp, 1])
-    if arr == []:
-        arr.append([n, 1])
-    return arr
-
-
-# case: str = "".join([x for x in sys.stdin])
-
-case = "100"
+case: str = "".join([x for x in sys.stdin])
 
 
 def main():
@@ -39,14 +19,14 @@ def main():
 
     result = 0
 
-    for x in range(1, N + 1):
-        ab = N - x
+    for x in range(1, N):
+        for y in range(1, N):
+            if x * y < N:
+                result += 1
+            else:
+                break
 
-        hoge = factorization(ab)
-
-        pass
-
-    pass
+    print(result)
 
 
 if __name__ == "__main__":

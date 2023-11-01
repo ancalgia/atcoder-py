@@ -15,10 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    print("No") if S.count("A") in [0, 3] else print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

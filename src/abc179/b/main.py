@@ -15,10 +15,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *Ds = IALL(case)
 
-    pass
+    zoroCnt = 0
+
+    for x in Ds:
+        if x[0] == x[1]:
+            zoroCnt += 1
+
+            if zoroCnt == 3:
+                print("Yes")
+                return
+
+        else:
+            zoroCnt = 0
+
+    print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

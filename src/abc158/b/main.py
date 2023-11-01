@@ -15,10 +15,22 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, A, B = IL(case)
+
+    cycle = A + B
+
+    d, m = divmod(N, cycle)
+
+    # 8 3 4
+
+    full = d * A
+
+    rest = min([m, A])
+
+    print(full + rest)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

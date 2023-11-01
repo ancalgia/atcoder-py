@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B = IL(case)
 
-    pass
+    tenPerLowest = B * 10
+
+    for x in range(tenPerLowest, tenPerLowest + 10):
+        if math.floor(x * 0.08) == A:
+            print(x)
+            return
+
+    print(-1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

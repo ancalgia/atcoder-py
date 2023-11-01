@@ -15,10 +15,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    X, T = IL(case)
-    print(max([X - T, 0]))
+    SX, SY, GX, GY = IL(case)
 
-    pass
+    dist = GX - SX
+
+    ratio = SY / (SY + GY)
+
+    pos = dist * ratio
+
+    print(SX + pos)
 
 
 if __name__ == "__main__":

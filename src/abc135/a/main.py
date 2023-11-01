@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B = IL(case)
 
-    pass
+    d, m = divmod((A + B), 2)
+
+    if m == 1:
+        print("IMPOSSIBLE")
+        return
+
+    else:
+        print(d)
+        return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

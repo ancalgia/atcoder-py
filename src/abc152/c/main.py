@@ -17,7 +17,15 @@ case: str = "".join([x for x in sys.stdin])
 def main():
     (N,), Ps = IALL(case)
 
-    pass
+    current = 99999999999999
+    result = 0
+
+    for x in Ps:
+        if x < current:
+            result += 1
+            current = x
+
+    print(result)
 
 
 if __name__ == "__main__":

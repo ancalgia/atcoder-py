@@ -15,11 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    X, T = IL(case)
-    print(max([X - T, 0]))
+    N, *STs = SL(case)
 
     pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
