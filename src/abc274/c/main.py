@@ -15,10 +15,25 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    amebaDict: dict[int, int] = dict()
+
+    amebaDict[1] = 1
+
+    nextAmeba = 2
+
+    for x in As:
+        sedai = amebaDict[x]
+
+        amebaDict[nextAmeba] = sedai + 1
+        amebaDict[nextAmeba + 1] = sedai + 1
+
+        nextAmeba += 2
+
+    for x in range(1, N * 2 + 1 + 1):
+        print(amebaDict[x] - 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

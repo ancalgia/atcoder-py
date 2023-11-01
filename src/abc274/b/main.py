@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    HW, *matrix = SL(case)
 
-    pass
+    rotMatrix: list[str] = zip(*matrix)
+
+    result = []
+
+    for x in rotMatrix:
+        result.append(x.count("#"))
+
+    print(*result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (M,), Ds = IALL(case)
+
+    DSum = sum(Ds)
+
+    tgt = DSum // 2 + 1
+
+    month = 0
+
+    for x in Ds:
+        month += 1
+
+        if tgt <= x:
+            print(f"{month} {tgt}")
+            return
+
+        else:
+            tgt -= x
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

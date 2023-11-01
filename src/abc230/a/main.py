@@ -15,16 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *Ss = SL(case)
+    N = int(case)
 
-    allPtn = itertools.combinations(Ss, 2)
+    if N >= 42:
+        N += 1
 
-    for a, b in allPtn:
-        if a + b == (a + b)[::-1] or b + a == (b + a)[::-1]:
-            print("Yes")
-            return
+    print(f"AGC{str(N).zfill(3)}")
 
-    print("No")
+    pass
 
 
 if __name__ == "__main__":

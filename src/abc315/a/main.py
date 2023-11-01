@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
+
+    print(S.replace("a", "").replace("e", "").replace("i", "").replace("o", "").replace("u", ""))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

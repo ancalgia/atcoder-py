@@ -15,10 +15,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    result = []
+
+    for x in range(N):
+        result.append(sum(As[x * 7 : (x + 1) * 7]))
+
+    print(*result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
