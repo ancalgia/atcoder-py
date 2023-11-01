@@ -14,14 +14,21 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
-def f(i: int):
-    return sum(map(int, list(str(i))))
-
-
 def main():
-    A, B = IL(case)
+    NX, S = SL(case)
 
-    print(max([f(A), f(B)]))
+    N, X = IL(NX)
+
+    current = X
+
+    for x in S:
+        if x == "o":
+            current += 1
+        else:
+            current -= 1
+            current = max([0, current])
+
+    print(current)
 
 
 if __name__ == "__main__":

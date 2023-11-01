@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *ABs = IALL(case)
+
+    pointCounter = collections.Counter(itertools.chain.from_iterable(ABs))
+
+    maybeCenter = pointCounter.most_common()[0]
+
+    print("Yes") if maybeCenter[1] == N - 1 else print("No")
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
