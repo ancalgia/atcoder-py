@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *ABs = IALL(case)
 
-    pass
+    losers = set([x[1] for x in ABs])
+
+    maybeSaikyo: list[int] = []
+
+    for x in range(1, N + 1):
+        if x not in losers:
+            maybeSaikyo.append(x)
+
+    print(maybeSaikyo[0]) if len(maybeSaikyo) == 1 else print(-1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

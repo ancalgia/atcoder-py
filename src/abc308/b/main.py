@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    NM, Cs, Ds, Ps = SL(case)
 
-    pass
+    N, M = IL(NM)
+
+    Cs = Cs.split()
+    Ds = Ds.split()
+    elseP, *Ps = IL(Ps)
+
+    priceDict: dict[str, int] = dict()
+    for d, p in zip(Ds, Ps):
+        priceDict[d] = p
+
+    result = 0
+    for c in Cs:
+        result += priceDict.get(c, elseP)
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

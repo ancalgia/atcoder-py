@@ -15,10 +15,32 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    dq = collections.deque([As[0]])
+
+    current = As[0]
+
+    for x in As[1:]:
+        diff = x - current
+
+        if abs(diff) == 1:
+            dq.append(x)
+
+        else:
+            if diff > 0:
+                for z in range(1, abs(diff)):
+                    dq.append(current + z)
+            else:
+                for z in range(1, abs(diff)):
+                    dq.append(current - z)
+
+            dq.append(x)
+
+        current = x
+
+    print(*dq)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

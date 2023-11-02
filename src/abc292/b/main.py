@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, Q), *Queries = IALL(case)
 
-    pass
+    penaDict: dict[int, int] = dict()
+
+    for x in range(1, N + 1):
+        penaDict[x] = 0
+
+    for q1, q2 in Queries:
+        if q1 == 1:
+            penaDict[q2] += 1
+        elif q1 == 2:
+            penaDict[q2] += 2
+        else:
+            print("Yes") if penaDict[q2] >= 2 else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
