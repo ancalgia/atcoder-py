@@ -81,7 +81,7 @@
   "print Yes No": {
     "scope": "python",
     "prefix": "sni_print_YN",
-    "body": ["print(\"Yes\") if condition else print(\"No\")"],
+    "body": ["print(\"Yes\") if cond else print(\"No\")"],
     "description": "print YesNo"
   },
 

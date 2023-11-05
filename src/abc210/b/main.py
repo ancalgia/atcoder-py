@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, S = SL(case)
 
-    pass
+    firstIdx = S.find("1") + 1
+
+    print("Takahashi") if firstIdx % 2 == 1 else print("Aoki")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

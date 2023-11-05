@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S1, S2, S3, S4 = SL(case)
 
-    pass
+    cond = len(set([S1, S2, S3, S4])) == 4
+
+    print("Yes") if cond else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

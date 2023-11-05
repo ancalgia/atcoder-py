@@ -15,10 +15,19 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    Ps = IL(case)
+
+    result = []
+
+    num2alpha = lambda c: chr(c + 96)
+
+    for x in Ps:
+        result.append(num2alpha(x))
+
+    print("".join(result))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
