@@ -13,12 +13,33 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 4 4
+# ##.#
+# ....
+# ##.#
+# .#.#
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    NW, *matrix = SL(case)
 
-    pass
+    matrix2 = [x for x in matrix if "#" in x]
+
+    rotated = list(zip(*matrix2))
+
+    matrix3 = [x for x in rotated if "#" in x]
+
+    rotated2 = list(zip(*matrix3))
+
+    for x in rotated2:
+        print("".join(x))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

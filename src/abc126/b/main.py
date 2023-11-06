@@ -15,10 +15,25 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    num1 = int(S[:2])
+    num2 = int(S[2:])
+
+    isNum1Month = 1 <= num1 <= 12
+    isNum2Month = 1 <= num2 <= 12
+
+    if not isNum1Month and not isNum2Month:
+        print("NA")
+
+    elif isNum1Month and isNum2Month:
+        print("AMBIGUOUS")
+
+    elif isNum1Month and not isNum2Month:
+        print("MMYY")
+    else:
+        print("YYMM")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

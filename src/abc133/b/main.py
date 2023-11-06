@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, D), *Xs = IALL(case)
 
-    pass
+    result = 0
+
+    for x in range(N):
+        for y in range(x + 1, N):
+            tmp = math.sqrt(sum([(a - b) ** 2 for a, b in zip(Xs[x], Xs[y])]))
+
+            f, i = math.modf(tmp)
+
+            if f == 0:
+                result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

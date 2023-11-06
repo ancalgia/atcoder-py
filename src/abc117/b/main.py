@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), Ls = IALL(case)
 
-    pass
+    Ls.sort(reverse=True)
+
+    print("Yes") if Ls[0] < sum(Ls[1:]) else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -14,11 +14,38 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 5 3 6 8
+# -10 3 1 5 -100
+# 100 6 14
+#     """
+# ).strip()
+# #  W
+
+
+# 3 2 10 20
+# 8 15 13
+# 16 22
+
+# expected:
+# No_War
+
+
 def main():
-    N, *STs = SL(case)
+    (N, M, X, Y), Xs, Ys = IALL(case)
 
-    pass
+    XRight = max(Xs + [X])
+    YLeft = min(Ys + [Y])
+
+    if X >= YLeft or Y <= XRight:
+        print("War")
+        return
+
+    print("War") if XRight >= YLeft else print("No War")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

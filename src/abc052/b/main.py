@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, S = SL(case)
 
-    pass
+    N = int(N)
+
+    X = 0
+
+    maxX = 0
+
+    for c in S:
+        if c == "I":
+            X += 1
+            maxX = max([X, maxX])
+
+        else:
+            X -= 1
+
+    print(maxX)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *XUs = SL(case)
 
-    pass
+    JPYs = 0
+    BTCs = 0
+    for xu in XUs:
+        x, u = xu.split()
+
+        if u == "JPY":
+            JPYs += int(x)
+
+        else:
+            BTCs += float(x)
+
+    print(JPYs + BTCs * 380000)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

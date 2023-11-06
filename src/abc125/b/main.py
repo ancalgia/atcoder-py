@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), Vs, Cs = IALL(case)
+
+    kosupas = [v - c for v, c in zip(Vs, Cs)]
+
+    print(sum([x for x in kosupas if x > 0]))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

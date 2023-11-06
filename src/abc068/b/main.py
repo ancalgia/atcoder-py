@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    answers = set([1, 2, 4, 8, 16, 32, 64])
+
+    while True:
+        if N in answers:
+            print(N)
+            return
+
+        N -= 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

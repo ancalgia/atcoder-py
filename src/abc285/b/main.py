@@ -13,12 +13,31 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 6
+# abcbac
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    N, S = SL(case)
 
-    pass
+    N = int(N)
+
+    for x in range(1, N):
+        tmp = 0
+        for y in range(0, N - x):
+            if S[y] != S[y + x]:
+                tmp += 1
+            else:
+                break
+
+        print(tmp)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
