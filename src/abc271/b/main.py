@@ -13,12 +13,31 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 2 2
+# 3 1 4 7
+# 2 5 9
+# 1 3
+# 2 1
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    (N, Q), *rest = IALL(case)
 
-    pass
+    tmpAs = rest[:N]
+
+    As = [x[1:] for x in tmpAs]
+
+    Queries = rest[N:]
+
+    for s, k in Queries:
+        print(As[s - 1][k - 1])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

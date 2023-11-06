@@ -14,11 +14,23 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "abcdefg"
+
+
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    frontS = S[: len(S) // 2]
+    backS = S[::-1][: len(S) // 2]
+
+    result = 0
+
+    for a, b in zip(frontS, backS):
+        if a != b:
+            result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

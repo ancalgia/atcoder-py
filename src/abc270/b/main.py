@@ -15,10 +15,34 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    X, Y, Z = IL(case)
 
-    pass
+    # 考えるのが面倒なので正の方向にゴールがあることにする
+    if X < 0:
+        X = -X
+        Y = -Y
+        Z = -Z
+
+    if 0 <= Y <= X:
+        # 間に壁あり
+
+        if Y < Z:
+            # ハンマーが取れない
+            print(-1)
+            return
+
+        elif Z < 0:
+            # ハンマーを取りに後進
+            print(abs(Z) * 2 + X)
+
+        else:
+            # 歩くだけでクリア
+            print(X)
+
+    elif Y < 0 or X < Y:
+        # 間に壁なし
+        print(X)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

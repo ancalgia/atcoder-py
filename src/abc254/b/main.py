@@ -15,10 +15,20 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    results: list[list[int]] = [[1]]
+
+    for x in range(N - 1):
+        tmp = [0] + results[-1].copy() + [0]
+
+        sums = [right + left for left, right in zip(tmp, tmp[1:])]
+
+        results.append(sums)
+
+    for x in results:
+        print(*x)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    kukus: set[int] = set()
+
+    [[kukus.add(x * y) for y in range(1, 10)] for x in range(1, 10)]
+
+    print("Yes") if N in kukus else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

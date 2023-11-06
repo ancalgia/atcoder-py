@@ -15,10 +15,15 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, A, B = IL(case)
 
-    pass
+    dotStart = [("." if idx % 2 == 1 else "#") * B for idx, x in enumerate(range(N), 1)]
+    shpStart = [("." if idx % 2 == 0 else "#") * B for idx, x in enumerate(range(N), 1)]
+
+    for idx, x in enumerate(range(N), 1):
+        for y in range(A):
+            print("".join(dotStart if idx % 2 == 1 else shpStart))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

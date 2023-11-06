@@ -15,10 +15,22 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *ABs = IALL(case)
 
-    pass
+    cityDict: dict[int, list[int]] = {}
+
+    for x in range(1, N + 1):
+        cityDict[x] = []
+
+    for a, b in ABs:
+        cityDict[a].append(b)
+        cityDict[b].append(a)
+
+    for x in range(1, N + 1):
+        tgt = cityDict[x]
+
+        print(*[*[len(tgt)] + sorted(tgt)])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,13 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C, D = IL(case)
 
-    pass
+    takaAttack = math.ceil(C / B)
+    aokiAttack = math.ceil(A / D)
+
+    print("Yes") if takaAttack <= aokiAttack else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

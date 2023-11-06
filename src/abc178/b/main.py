@@ -15,10 +15,20 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C, D = IL(case)
 
-    pass
+    # isNegative1 = B < 0
+    # isNegative2 = D < 0
+
+    allPattern = itertools.product([A, B], [C, D])
+
+    results = []
+
+    for le, ri in allPattern:
+        results.append(le * ri)
+
+    print(max(results))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

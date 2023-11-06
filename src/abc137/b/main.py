@@ -15,10 +15,13 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    K, X = IL(case)
 
-    pass
+    maybeMin = X - K + 1
+    maybeMax = X + K - 1
+
+    print(*[x for x in range(maybeMin, maybeMax + 1)])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

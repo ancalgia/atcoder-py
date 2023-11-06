@@ -17,8 +17,18 @@ case: str = "".join([x for x in sys.stdin])
 def main():
     N, *STs = SL(case)
 
-    pass
+    if len(N) == 1:
+        print("Yes")
+        return
+
+    while True:
+        if N[-1] != "0":
+            break
+
+        N = N[:-1]
+
+    print("Yes") if N == N[::-1] else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

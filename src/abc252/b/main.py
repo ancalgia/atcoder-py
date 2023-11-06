@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, K), As, Bs = IALL(case)
 
-    pass
+    maxOisisa = max(As)
+
+    for idx, x in enumerate(As):
+        if x == maxOisisa:
+            if idx + 1 in Bs:
+                print("Yes")
+                return
+
+    print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

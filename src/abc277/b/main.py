@@ -15,10 +15,29 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *Ss = SL(case)
 
     pass
 
+    # 1 文字目は H , D , C , S のどれかである。
+    # 2 文字目は A , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , T , J , Q , K のどれかである。
 
-if __name__ == '__main__':
+    SsSet = set(Ss)
+
+    if len(Ss) != len(SsSet):
+        print("No")
+        return
+
+    for x in Ss:
+        if x[0] not in ["H", "D", "C", "S"]:
+            print("No")
+            return
+        if x[1] not in ["A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K"]:
+            print("No")
+            return
+
+    print("Yes")
+
+
+if __name__ == "__main__":
     main()

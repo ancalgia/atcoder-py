@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), As, Bs = IALL(case)
 
-    pass
+    ACounter = collections.Counter(As)
+    BCounter = collections.Counter(Bs)
+
+    for x in BCounter:
+        if BCounter[x] > ACounter[x]:
+            print("No")
+            return
+
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

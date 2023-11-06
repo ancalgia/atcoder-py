@@ -14,11 +14,50 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 4
+# -WWW
+# L-DD
+# LD-W
+# LDW-
+#     """
+# ).strip()
+
+
 def main():
-    N, *STs = SL(case)
+    N, *matrix = SL(case)
 
-    pass
+    matrix = list(map(list, matrix))
+
+    matrixB = list(zip(*matrix))
+
+    for x in range(int(N)):
+        for y in range(int(N)):
+            if matrix[x][y] == "-":
+                if matrixB[x][y] != "-":
+                    print("incorrect")
+                    return
+
+            elif matrix[x][y] == "W":
+                if matrixB[x][y] != "L":
+                    print("incorrect")
+                    return
+
+            elif matrix[x][y] == "L":
+                if matrixB[x][y] != "W":
+                    print("incorrect")
+                    return
+
+            else:
+                if matrixB[x][y] != "D":
+                    print("incorrect")
+                    return
+
+    print("correct")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

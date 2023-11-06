@@ -15,10 +15,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *ABs = IALL(case)
 
-    pass
+    # 一人の場合の最短時間
+    singleMin = min([x[0] + x[1] for x in ABs])
+
+    # 二人の場合(全探索)
+    allComb = itertools.combinations(ABs, 2)
+
+    doubleMin = 99999999999
+
+    for a, b in allComb:
+        tmp = min([max([a[0], b[1]]), max([a[1], b[0]])])
+
+        doubleMin = min([doubleMin, tmp])
+
+    print(min([singleMin, doubleMin]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

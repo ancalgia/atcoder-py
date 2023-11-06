@@ -10,15 +10,18 @@ def IL(s: str) -> list[int]: return list(map(int, s.split()))
 def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in s.splitlines()]
 # fmt: on
 
+M = 998244353
 
 case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C, D, E, F = IL(case)
 
-    pass
+    result = ((((A % M) * (B % M) * (C % M)) % M) - ((D % M) * (E % M) * (F % M)) % M) % M
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
