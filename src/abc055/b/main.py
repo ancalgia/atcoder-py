@@ -9,16 +9,23 @@ def SL(s: str) -> list[str]: return s.splitlines()
 def IL(s: str) -> list[int]: return list(map(int, s.split()))
 def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in s.splitlines()]
 # fmt: on
-
+M = 10**9 + 7
 
 case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    result = 1
+
+    for x in range(1, N + 1):
+        result *= x
+
+        result %= M
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

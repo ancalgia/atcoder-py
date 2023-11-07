@@ -15,10 +15,29 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *rest = SL(case)
 
-    pass
+    N = int(N)
+
+    blues = rest[:N]
+
+    M = int(rest[N])
+
+    reds = rest[N + 1 :]
+
+    blueCounter = collections.Counter(blues)
+    redCounter = collections.Counter(reds)
+
+    result = 0
+
+    for x in blueCounter:
+        tmp = blueCounter[x] - redCounter[x]
+
+        if tmp > 0:
+            result = max([tmp, result])
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

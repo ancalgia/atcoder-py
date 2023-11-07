@@ -14,11 +14,18 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# "8 13"
+
+
 def main():
-    N, *STs = SL(case)
+    A, B = IL(case)
 
-    pass
+    diff = B - A
+
+    fullTall = ((1 + diff) * diff) // 2
+
+    print(fullTall - B)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

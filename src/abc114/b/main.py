@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    minDiff = 999999
+
+    for x in range(len(S) - 2):
+        tmp = abs(753 - int(S[x : x + 3]))
+
+        minDiff = min([minDiff, tmp])
+
+    print(minDiff)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

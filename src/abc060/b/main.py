@@ -15,10 +15,29 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, C = IL(case)
+
+    amariSet: set[int] = set()
+
+    current = A
+
+    while True:
+        amari = current % B
+
+        if amari == C:
+            print("YES")
+            return
+
+        if amari in amariSet:
+            print("NO")
+            return
+
+        amariSet.add(amari)
+
+        current += A
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

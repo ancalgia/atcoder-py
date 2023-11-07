@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, S = SL(case)
+    N = int(N)
 
-    pass
+    result = 0
+
+    for pos in range(N):
+        x = S[:pos]
+        y = S[pos:]
+
+        xSet = set(x)
+        ySet = set(y)
+
+        tmp = len(xSet & ySet)
+
+        result = max([result, tmp])
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

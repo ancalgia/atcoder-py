@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M, X), As = IALL(case)
 
-    pass
+    As = set(As)
+
+    foreResult = 0
+
+    for x in range(X, N):
+        if x in As:
+            foreResult += 1
+
+    backResult = 0
+
+    for x in range(X, 0, -1):
+        if x in As:
+            backResult += 1
+
+    print(min([foreResult, backResult]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

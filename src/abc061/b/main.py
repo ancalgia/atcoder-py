@@ -15,10 +15,13 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *ABs = IALL(case)
 
-    pass
+    ABCounter = collections.Counter(itertools.chain.from_iterable(ABs))
+
+    for x in range(1, N + 1):
+        print(ABCounter[x])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -14,11 +14,30 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "AtCod"
+
+
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    if S[0] != "A":
+        print("WA")
+        return
+
+    if not (S.count("A") == 1 and S.count("C") == 1):
+        print("WA")
+        return
+
+    if S[2:-1].count("C") != 1:
+        print("WA")
+        return
+
+    if S.replace("A", "").replace("C", "").lower() != S.replace("A", "").replace("C", ""):
+        print("WA")
+        return
+
+    print("AC")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

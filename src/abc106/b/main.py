@@ -11,14 +11,37 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
+# 約数の列挙
+def make_divisors(n: int) -> list[int]:
+    lower_divisors: list[int] = []
+    upper_divisors: list[int] = []
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            lower_divisors.append(i)
+            if i != n // i:
+                upper_divisors.append(n // i)
+        i += 1
+    return lower_divisors + upper_divisors[::-1]
+
+
 case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    result = 0
+
+    for x in range(1, N + 1):
+        if x % 2 == 0:
+            continue
+
+        if len(make_divisors(x)) == 8:
+            result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

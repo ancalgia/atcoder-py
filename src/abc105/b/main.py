@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    ables = {4, 7, 8, 11, 12, 14, 15, 16, 18, 19, 20, 21}
+
+    print("Yes") if N in ables or N >= 20 else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

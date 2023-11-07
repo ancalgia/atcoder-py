@@ -15,10 +15,33 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *As = IALL(case)
+
+    As = [x[0] for x in As]
+
+    light = 1
+    result = 0
+
+    pushedSet: set[int] = set()
+
+    while True:
+        next = As[light - 1]
+
+        if light in pushedSet:
+            print(-1)
+            return
+        else:
+            pushedSet.add(light)
+
+        result += 1
+        if next == 2:
+            print(result)
+            return
+
+        light = next
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

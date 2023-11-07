@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), (K,), Xs = IALL(case)
 
-    pass
+    result = 0
+
+    for x in Xs:
+        tmp = min([(K - x) * 2, x * 2])
+
+        result += tmp
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
