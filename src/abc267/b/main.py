@@ -15,10 +15,34 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
+
+    if S[0] == "1":
+        print("No")
+        return
 
     pass
 
+    TFlist = [
+        S[6] == "1",
+        S[3] == "1",
+        S[1] == "1" or S[7] == "1",
+        S[4] == "1",
+        S[2] == "1" or S[8] == "1",
+        S[5] == "1",
+        S[9] == "1",
+    ]
 
-if __name__ == '__main__':
+    if TFlist.count(True) == 1:
+        print("No")
+        return
+
+    TrueIndexes = [i for i, x in enumerate(TFlist) if x == True]
+
+    diffs = [right - left for left, right in zip(TrueIndexes, TrueIndexes[1:])]
+
+    print("Yes") if diffs.count(1) != len(diffs) else print("No")
+
+
+if __name__ == "__main__":
     main()

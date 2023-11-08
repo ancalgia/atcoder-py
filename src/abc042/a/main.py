@@ -15,16 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    W, A, B = IL(case)
+    ABC, *_ = case.splitlines()
 
-    Apos = [A, A + W]
-    Bpos = [B, B + W]
+    A, B, C = sorted(ABC.split())
 
-    if Apos[0] <= Bpos[0] <= Apos[1] or Bpos[0] <= Apos[0] <= Bpos[1]:
-        print(0)
-        return
-
-    print(min([abs(Apos[0] - Bpos[1]), abs(Bpos[0] - Apos[1])]))
+    if A == "5" and B == "5" and C == "7":
+        print("YES")
+    else:
+        print("NO")
 
 
 if __name__ == "__main__":

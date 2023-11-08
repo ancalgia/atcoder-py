@@ -15,17 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    W, A, B = IL(case)
+    N, *STs = SL(case)
 
-    Apos = [A, A + W]
-    Bpos = [B, B + W]
-
-    if Apos[0] <= Bpos[0] <= Apos[1] or Bpos[0] <= Apos[0] <= Bpos[1]:
-        print(0)
-        return
-
-    print(min([abs(Apos[0] - Bpos[1]), abs(Bpos[0] - Apos[1])]))
+    pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

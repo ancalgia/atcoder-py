@@ -15,10 +15,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, X), *VPs = IALL(case)
 
-    pass
+    X = X * 100
+
+    currentAlchohl = 0
+    resultCount = 0
+
+    for v, p in VPs:
+        resultCount += 1
+        currentAlchohl += v * p
+
+        if currentAlchohl > X:
+            print(resultCount)
+            return
+
+    print(-1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
