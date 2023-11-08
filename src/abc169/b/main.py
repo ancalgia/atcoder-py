@@ -15,10 +15,22 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    result = 1
+
+    if 0 in As:
+        print(0)
+        return
+
+    for x in As:
+        result *= x
+        if result >= 1000000000000000001:
+            print(-1)
+            return
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

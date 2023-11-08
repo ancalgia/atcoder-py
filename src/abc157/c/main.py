@@ -15,10 +15,35 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *SCs = IALL(case)
 
-    pass
+    maybeResult: list[str] = ["0" for x in range(N)]
+
+    for s, c in SCs:
+        if s == 1 and c == 0:
+            if N == 1:
+                print(0)
+                return
+            else:
+                print(-1)
+                return
+
+        if maybeResult[s - 1] != "0" and maybeResult[s - 1] != str(c):
+            print(-1)
+            return
+
+        maybeResult[s - 1] = str(c)
+
+    if maybeResult[0] == "0" and N != 1:
+        maybeResult[0] = "1"
+
+    result = int("".join(maybeResult))
+
+    if len(str(result)) != N:
+        print(-1)
+    else:
+        print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

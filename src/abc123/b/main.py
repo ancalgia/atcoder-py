@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    ABCDE = IL(case)
 
-    pass
+    ABCDE.sort(key=lambda x: int(str(x - 1)[-1]), reverse=True)
+
+    result = sum([math.ceil(x / 10) * 10 for x in ABCDE[:-1]]) + ABCDE[-1]
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

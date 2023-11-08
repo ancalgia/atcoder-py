@@ -14,11 +14,38 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 4 4
+# bbed
+# abcd
+# abed
+# fbed
+#     """
+# ).strip()
+
+
+def countDiff(le: str, ri: str) -> int:
+    return [x != y for x, y in zip(le, ri)].count(True)
+
+
 def main():
-    N, *STs = SL(case)
+    NM, *Ss = SL(case)
 
-    pass
+    allPtn = list(itertools.permutations(Ss))
+
+    for ptn in allPtn:
+        pass
+        diffs = [countDiff(right, left) for left, right in zip(ptn, ptn[1:])]
+
+        if all([x == 1 for x in diffs]):
+            print("Yes")
+            return
+
+    print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

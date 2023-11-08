@@ -15,10 +15,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    sameIdxs = 0
+
+    combos = 0
+    for idx, a in enumerate(As, 1):
+        if idx == a:
+            sameIdxs += 1
+
+        else:
+            if As[a - 1] == idx:
+                combos += 1
+
+    result = ((sameIdxs * (sameIdxs - 1)) // 2) + (combos // 2)
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

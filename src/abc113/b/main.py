@@ -15,10 +15,22 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), (T, A), Hs = IALL(case)
 
-    pass
+    minDiff = 999999999999999999999999
+    result = 0
+
+    for idx, h in enumerate(Hs, 1):
+        tmpKion = T - (h * 0.006)
+
+        tmpDiff = abs(A - tmpKion)
+
+        if minDiff > tmpDiff:
+            minDiff = tmpDiff
+            result = idx
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

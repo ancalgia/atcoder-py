@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *SPs = SL(case)
 
-    pass
+    N = int(N)
+
+    SPs = [[x.split()[0], int(x.split()[1]), idx] for idx, x in enumerate(SPs, 1)]
+
+    SPs.sort(key=lambda x: (x[0], -x[1]))
+
+    [print(x[2]) for x in SPs]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

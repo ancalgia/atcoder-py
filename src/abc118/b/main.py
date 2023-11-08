@@ -14,11 +14,35 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 3 4
+# 2 1 3
+# 3 1 2 3
+# 2 3 2
+#     """
+# ).strip()
+
+
 def main():
-    N, *STs = SL(case)
+    (N, M), *ANs = IALL(case)
 
-    pass
+    ANs = [rest for x, *rest in ANs]
+
+    ANSets: list[set[int]] = []
+
+    for an in ANs:
+        ANSets.append(set(an))
+
+    everyLikes = set([x for x in range(1, M + 1)])
+
+    for s in ANSets:
+        everyLikes = everyLikes & s
+
+    print(len(everyLikes))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

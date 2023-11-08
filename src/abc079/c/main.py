@@ -15,10 +15,23 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    ABCD, *_ = SL(case)
 
-    pass
+    A, B, C, D = map(int, ABCD)
+
+    allPtn = list(itertools.product(["+", "-"], ["+", "-"], ["+", "-"]))
+
+    for op1, op2, op3 in allPtn:
+        result = A
+
+        result += B if op1 == "+" else -B
+        result += C if op2 == "+" else -C
+        result += D if op3 == "+" else -D
+
+        if result == 7:
+            print(f"{A}{op1}{B}{op2}{C}{op3}{D}=7")
+            return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

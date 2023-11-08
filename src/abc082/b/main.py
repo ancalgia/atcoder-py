@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, T = SL(case)
 
-    pass
+    SDash = "".join(sorted(list(S)))
+    TDash = "".join(sorted(list(T), reverse=True))
+
+    cond = SDash < TDash
+    print("Yes") if cond else print("No")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

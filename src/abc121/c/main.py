@@ -15,10 +15,25 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *ABs = IALL(case)
 
-    pass
+    ABs.sort()
+
+    money = 0
+
+    needs = M
+
+    for a, b in ABs:
+        if needs <= b:
+            money += needs * a
+            break
+
+        else:
+            money += a * b
+            needs -= b
+
+    print(money)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

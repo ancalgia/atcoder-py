@@ -15,10 +15,16 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    X1, Y1, X2, Y2 = IL(case)
 
-    pass
+    # X3 = X1 + (X2 - X1) + (Y2 - Y1)
+    X3 = X1 + ((X2 - X1) - (Y2 - Y1))
+    Y3 = Y1 + ((Y2 - Y1) + (X2 - X1))
+    X4 = X2 + ((X3 - X2) - (Y3 - Y2))
+    Y4 = Y2 + ((Y3 - Y2) + (X3 - X2))
+
+    print(f"{X3} {Y3} {X4} {Y4}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
