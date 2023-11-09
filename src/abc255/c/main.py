@@ -13,12 +13,32 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "6 2 3 3"  # 1
+
+
+# case = "-555555555555555555 -1000000000000000000 1000000 1000000000000"
+# 444445
+
 
 def main():
-    N, *STs = SL(case)
+    X, A, D, N = IL(case)
 
-    pass
+    # tgts = [(x * D + A) for x in range(N)]
+
+    # 初項との差
+    shokoDiff = A - X
+
+    # 最終項との差
+    lastDiff = (A + (D * (N - 1))) - X
+
+    if (shokoDiff >= 0 and lastDiff >= 0) or (shokoDiff <= 0 and lastDiff <= 0):
+        print(min([abs(shokoDiff), abs(lastDiff)]))
+        return
+
+    maybeMin = abs(shokoDiff) % D
+
+    print(min([abs(maybeMin), abs(D - maybeMin)]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

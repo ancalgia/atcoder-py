@@ -11,14 +11,40 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
+M = 998244353
+
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "2"
+
+
+def updateNums(nums: list[int]) -> list[int]:
+    v = []
+
+    for x in range(len(nums)):
+        if x == 0:
+            v.append((nums[0] + nums[1]) % M)
+            continue
+        if x == len(nums) - 1:
+            v.append((nums[-1] + nums[-2]) % M)
+            continue
+
+        v.append((nums[x - 1] + nums[x] + nums[x + 1]) % M)
+
+    return v
+
+
 def main():
-    N, *STs = SL(case)
+    N = int(case)
 
-    pass
+    nums = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+    for x in range(N - 1):
+        nums = updateNums(nums)
+
+    print((sum(nums)) % M)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

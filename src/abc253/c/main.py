@@ -15,10 +15,32 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *Queries = IALL(case)
 
-    pass
+    counter: collections.Counter[int] = collections.Counter()
+
+    currentMin = 999999999999999999
+    currentMax = 0
+
+    for q in Queries:
+        if q[0] == 1:
+            counter[q[1]] += 1
+            currentMin = min([currentMin, q[1]])
+            currentMax = max([currentMax, q[1]])
+
+        elif q[0] == 2:
+            counter[q[1]] -= min([q[2], counter[q[1]]])
+
+            if counter[q[1]] == 0:
+                counter.pop(q[1])
+                if currentMin == q[1]:
+                    currentMin = min(counter) if len(counter) > 0 else 999999999999999999
+                if currentMax == q[1]:
+                    currentMax = max(counter) if len(counter) > 0 else 0
+
+        else:
+            print(currentMax - currentMin)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
