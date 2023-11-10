@@ -15,10 +15,14 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), (A,), (B,), (C,), (D,), (E,) = IALL(case)
+
+    minABCDE = min([A, B, C, D, E])
+
+    print(math.ceil(N / minABCDE) + 4)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

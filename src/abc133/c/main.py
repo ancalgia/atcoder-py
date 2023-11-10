@@ -13,12 +13,33 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "674 680"
+
 
 def main():
-    N, *STs = SL(case)
+    L, R = IL(case)
 
-    pass
+    if L == 0:
+        print(0)
+        return
+
+    existSet = set()
+
+    for x in range(4100):
+        if L + x > R:
+            break
+
+        tmp = (L + x) % 2019
+
+        if tmp not in existSet:
+            existSet.add(tmp)
+        else:
+            break
+
+    testComb = itertools.combinations(existSet, 2)
+
+    print(min([(x * y) % 2019 for x, y in testComb]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

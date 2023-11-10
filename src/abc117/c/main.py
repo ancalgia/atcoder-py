@@ -14,11 +14,31 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 4 3
+# -100000 5 99999
+#     """
+# ).strip()
+
+
 def main():
-    N, *STs = SL(case)
+    (N, M), Xs = IALL(case)
 
-    pass
+    if N >= M:
+        print(0)
+        return
+
+    Xs.sort()
+
+    distances = [right - left for left, right in zip(Xs, Xs[1:])]
+
+    distances.sort()
+
+    print(sum(distances[: M - N]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

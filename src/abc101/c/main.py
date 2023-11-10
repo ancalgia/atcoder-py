@@ -13,12 +13,45 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 21 3
+# 5 5 5 5 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+#     """
+# ).strip()  # 4
+
+
+# 5 5 5 5
+# 1 5 5 5 5
+# 5 5 5 5 5
+# 5 5 5 5 5 5 5
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 4 3
+# 2 3 1 4
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    (N, K), As = IALL(case)
 
-    pass
+    minIdx = As.index(1)
+
+    if N == K:
+        print(1)
+        return
+
+    if K == 2:
+        print(N - 1)
+        return
+
+    print(math.ceil((N - 1) / (K - 1)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

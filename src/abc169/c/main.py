@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B = case.split()
 
-    pass
+    A = int(A)
+    B = int(B.replace(".", ""))
+
+    AB = A * B
+
+    if len(str(AB)) <= 2:
+        print(0)
+    else:
+        print(str(AB)[:-2])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,36 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M, X), *CAs = IALL(case)
 
     pass
 
+    allPtn = list(itertools.product(*[[True, False] for x in range(N)]))
 
-if __name__ == '__main__':
+    CAs = [(c, x) for c, *x in CAs]
+
+    minPrice = 99999999999999999999
+
+    for ptn in allPtn:
+        tmpCAs = [x for p, x in zip(ptn, CAs) if p == True]
+
+        tmpPrice = 0
+
+        tmpSkills = [0 for _ in range(M)]
+
+        for c, a in tmpCAs:
+            tmpPrice += c
+            for idx in range(M):
+                tmpSkills[idx] += a[idx]
+
+        if all([z >= X for z in tmpSkills]):
+            minPrice = min([minPrice, tmpPrice])
+
+    if minPrice == 99999999999999999999:
+        print(-1)
+    else:
+        print(minPrice)
+
+
+if __name__ == "__main__":
     main()
