@@ -15,10 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, D = IL(case)
+
+    # dist = math.sqrt(A**2 + B**2)
+
+    hoge = math.radians(D)
+
+    # 回転後の座標を計算
+    x = A * math.cos(hoge) - B * math.sin(hoge)
+    y = A * math.sin(hoge) + B * math.cos(hoge)
+
+    # 答えの出力
+    print(x, y)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

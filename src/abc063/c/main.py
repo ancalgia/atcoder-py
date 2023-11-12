@@ -15,10 +15,24 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *Ss = SL(case)
 
-    pass
+    Ss = list(map(int, Ss))
+
+    Ss.sort()
+
+    allScore = sum(Ss)
+    if allScore % 10 != 0:
+        print(allScore)
+        return
+
+    for x in Ss:
+        if x % 10 != 0:
+            print(allScore - x)
+            return
+
+    print(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

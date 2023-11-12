@@ -15,13 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *As = SL(case)
+    S, *_ = SL(case)
 
-    As = map(int, As)
+    dq = collections.deque()
 
-    counter = collections.Counter(As)
+    for x in S:
+        if x == "C" and len(dq) >= 2:
+            last1 = dq.pop()
+            last2 = dq.pop()
 
-    print(sum([1 for x in counter if counter[x] % 2 == 1]))
+            if last2 == "A" and last1 == "B":
+                continue
+            else:
+                dq.extend([last2, last1, x])
+                continue
+
+        dq.append(x)
+
+    print("".join(dq))
+
+    pass
 
 
 if __name__ == "__main__":

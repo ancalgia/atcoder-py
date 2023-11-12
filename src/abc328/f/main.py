@@ -15,14 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *As = SL(case)
+    N, *STs = SL(case)
 
-    As = map(int, As)
-
-    counter = collections.Counter(As)
-
-    print(sum([1 for x in counter if counter[x] % 2 == 1]))
+    pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

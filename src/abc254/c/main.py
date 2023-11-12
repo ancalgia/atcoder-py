@@ -13,12 +13,48 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 5 3
+# 3 4 1 3 4
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    (N, K), As = IALL(case)
 
-    pass
+    separatedAs: dict[int, list[int]] = dict()
+
+    for idx, x in enumerate(As):
+        key = idx % K
+
+        if key not in separatedAs:
+            separatedAs[key] = [x]
+        else:
+            separatedAs[key].append(x)
+
+    goal = sorted(As)
+
+    separatedGoal: dict[int, list[int]] = dict()
+
+    for idx, x in enumerate(goal):
+        key = idx % K
+
+        if key not in separatedGoal:
+            separatedGoal[key] = [x]
+        else:
+            separatedGoal[key].append(x)
+
+    for x in range(K):
+        if sorted(separatedAs[x]) != sorted(separatedGoal[x]):
+            print("No")
+            return
+
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

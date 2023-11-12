@@ -14,11 +14,30 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "100 0 1"
+
+
 def main():
-    N, *STs = SL(case)
+    R, X, Y = IL(case)
+
+    allDist = math.sqrt(X**2 + Y**2)
+
+    d, m = divmod(allDist, R)
+
+    if d == 0:
+        print(2)
+        return
+
+    if m == 0:
+        print(int(d))
+
+    else:
+        print(int(d) + 1)
+
+    # print(math.ceil(allDist / R))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

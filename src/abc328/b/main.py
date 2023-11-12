@@ -14,14 +14,38 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 12
+# 31 29 31 30 31 30 31 31 30 31 30 31
+#     """
+# ).strip()
+
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 1
+# 1
+#     """
+# ).strip()
+
+
 def main():
-    N, *As = SL(case)
+    (N,), Ds = IALL(case)
 
-    As = map(int, As)
+    result = 0
 
-    counter = collections.Counter(As)
+    for idx, x in enumerate(Ds, 1):
+        for y in range(1, x + 1):
+            tmpSet = set(str(idx) + str(y))
 
-    print(sum([1 for x in counter if counter[x] % 2 == 1]))
+            if len(tmpSet) == 1:
+                result += 1
+
+    print(result)
 
 
 if __name__ == "__main__":

@@ -15,10 +15,17 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, T), Ts = IALL(case)
 
-    pass
+    diffs = [right - left for left, right in zip(Ts, Ts[1:])]
+
+    result = 0
+
+    for x in diffs:
+        result += min([x, T])
+
+    print(result + T)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
