@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, *Ss = SL(case)
 
-    pass
+    N = int(N)
+
+    sortedSs = ["".join(sorted(x)) for x in Ss]
+
+    counter = collections.Counter(sortedSs)
+
+    result = sum([(counter[x] * (counter[x] - 1)) // 2 for x in counter])
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
