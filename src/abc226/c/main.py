@@ -30,11 +30,7 @@ case: str = "".join([x for x in sys.stdin])
 def main():
     (N,), *Ts = IALL(case)
 
-    wazalist = [[idx, False] for idx in range(int(N))]
-
-    wazalist[-1][1] = True
-
-    next_check_set: set[int] = set([wazalist[-1][0]])
+    next_check_set: set[int] = set([N - 1])
 
     already_checked_set: set[int] = set()
 
@@ -42,18 +38,18 @@ def main():
         if already_checked_set >= next_check_set:
             break
 
-        nextList = next_check_set.copy()
+        updates: list[int] = []
 
-        next_check_set.clear()
-
-        for x in nextList:
+        for x in next_check_set:
             already_checked_set.add(x)
 
             if Ts[x][1] != 0:
-                next_check_set.update([x - 1 for x in Ts[x][2:]])
+                updates.extend([x - 1 for x in Ts[x][2:]])
+
+        next_check_set.clear()
+        [next_check_set.add(x) for x in updates if x not in already_checked_set]
 
     time = 0
-
     for x in already_checked_set:
         time += Ts[x][0]
 

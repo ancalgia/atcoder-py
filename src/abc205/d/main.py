@@ -11,14 +11,52 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
-case: str = "".join([x for x in sys.stdin])
+# case: str = "".join([x for x in sys.stdin])
+
+
+from textwrap import dedent
+
+case = dedent(
+    """
+4 3
+3 5 6 7
+2
+5
+3
+    """
+).strip()
 
 
 def main():
-    N, *STs = SL(case)
+    (N, Q), As, *Queries = IALL(case)
+
+    Queries = [x[0] for x in Queries]
+
+    tmp = 0
+
+    lastNum = 0
+
+    excludeCountList: list[dict[int, int]] = []
+
+    for a in As:
+        tmp += a - 1 - lastNum
+
+        excludeCountList.append({a: tmp})
+
+        lastNum = a
+
+    print(excludeCountList)
+
+    # 2 → 2
+    # 5 → 9
+    # 3 → 4
+
+    for q in Queries:
+        hoge = bisect.bisect_left(As, q)
+        print(bisect.bisect_left(As, q) + q)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -43,10 +43,13 @@ def main():
                             for idx7 in range(idx6 + 1, len(S)):
                                 if S[idx7] != "a":
                                     continue
-                                for idx8 in range(idx7 + 1, len(S)):
-                                    if S[idx8] == "i":
-                                        result += 1
-                                        result %= 10**9 + 7
+                                result += S[idx7 + 1 :].count("i")
+                                result %= 10**9 + 7
+
+                                # for idx8 in range(idx7 + 1, len(S)):
+                                #     if S[idx8] == "i":
+                                #         result += 1
+                                #         result %= 10**9 + 7
 
     print(result)
 

@@ -13,12 +13,39 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 8 3
+# ACACTACG
+# 3 7
+# 2 3
+# 1 8
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    NQ, S, *Queries = SL(case)
 
-    pass
+    Queries = [IL(x) for x in Queries]
+
+    AClist = [left == "A" and right == "C" for left, right in zip(S, S[1:])]
+
+    cum: list[int] = [0]
+
+    tmp = 0
+
+    for x in AClist:
+        if x:
+            tmp += 1
+
+        cum.append(tmp)
+
+    for le, ri in Queries:
+        print(cum[ri - 1] - cum[le - 1])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
