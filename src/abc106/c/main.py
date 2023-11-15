@@ -15,10 +15,25 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, K, *_ = SL(case)
+
+    K = int(K)
+
+    count1s = 0
+
+    firstElse = ""
+
+    for c in S:
+        if c == "1":
+            count1s += 1
+        else:
+            firstElse = c
+            break
+
+    print("1") if K <= count1s else print(firstElse)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

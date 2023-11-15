@@ -15,10 +15,31 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, K), *Ts = IALL(case)
 
-    pass
+    Cities = [x + 1 for x in range(1, N)]
+
+    allPtn = list(map(list, itertools.permutations(Cities)))
+
+    for ptn in allPtn:
+        ptn.insert(0, 1)
+        ptn.append(1)
+
+    result = 0
+
+    for ptn in allPtn:
+        fromTos = [(right, left) for left, right in zip(ptn, ptn[1:])]
+
+        tmpDist = 0
+
+        for f, t in fromTos:
+            tmpDist += Ts[f - 1][t - 1]
+
+        if tmpDist == K:
+            result += 1
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

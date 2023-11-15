@@ -15,10 +15,25 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), Xs = IALL(case)
+
+    sortedXs = sorted(Xs)
+
+    centerLeft = sortedXs[(N // 2) - 1]
+    centerRight = sortedXs[(N // 2)]
+
+    if centerLeft == centerRight:
+        [print(centerRight) for x in range(N)]
+        return
+
+    for p in Xs:
+        if p <= centerLeft:
+            print(centerRight)
+        else:
+            print(centerLeft)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
