@@ -14,11 +14,43 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 1 1 0
+# 2 2 2
+#     """
+# ).strip()
+
+
 def main():
-    N, *STs = SL(case)
+    (W, H, N), *XYAs = IALL(case)
 
-    pass
+    leftW = 0
+    rightW = W
+    bottomH = 0
+    topH = H
+
+    for x, y, a in XYAs:
+        if a == 1:
+            leftW = max(leftW, x)
+
+        elif a == 2:
+            rightW = min(rightW, x)
+
+        elif a == 3:
+            bottomH = max(bottomH, y)
+
+        else:
+            topH = min(topH, y)
+
+    if rightW - leftW <= 0 or topH - bottomH <= 0:
+        print(0)
+        return
+
+    print(max(0, (rightW - leftW) * (topH - bottomH)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

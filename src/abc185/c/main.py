@@ -15,10 +15,12 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
+
+    print(math.comb(N - 1, 11))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
