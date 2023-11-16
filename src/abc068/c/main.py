@@ -15,10 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *ABs = IALL(case)
 
-    pass
+    from1 = set()
+
+    toN = set()
+
+    for a, b in ABs:
+        if a == 1:
+            from1.add(b)
+        elif b == 1:
+            from1.add(a)
+        elif a == N:
+            toN.add(b)
+        elif b == N:
+            toN.add(a)
+
+    cond = len(from1 & toN) >= 1
+
+    print("POSSIBLE") if cond else print("IMPOSSIBLE")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
