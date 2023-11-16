@@ -11,14 +11,27 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
-case: str = "".join([x for x in sys.stdin])
+# case: str = "".join([x for x in sys.stdin])
+
+
+case = "9 20 30"
 
 
 def main():
-    N, *STs = SL(case)
+    A, B, N = IL(case)
 
+    result = 0
+
+    # loopCount = min(N, B)
+
+    for x in range(1, N + 1):
+        tmp = ((A * x) // B) - (A * (x // B))
+        print(tmp)
+        result = max(tmp, result)
+
+    print(result)
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

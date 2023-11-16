@@ -14,11 +14,54 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
+# case = "AB"
+
+
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
+
+    S = S.lower()
+
+    result = 0
+
+    keyDict = {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+        "f": 6,
+        "g": 7,
+        "h": 8,
+        "i": 9,
+        "j": 10,
+        "k": 11,
+        "l": 12,
+        "m": 13,
+        "n": 14,
+        "o": 15,
+        "p": 16,
+        "q": 17,
+        "r": 18,
+        "s": 19,
+        "t": 20,
+        "u": 21,
+        "v": 22,
+        "w": 23,
+        "x": 24,
+        "y": 25,
+        "z": 26,
+    }
+
+    pass
+
+    for idx, c in enumerate(S[::-1]):
+        result += keyDict[c] * (26**idx)
+
+    print(result)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

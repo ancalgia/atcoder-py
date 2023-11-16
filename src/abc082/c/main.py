@@ -15,10 +15,29 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    AsCounter = collections.Counter(As)
+
+    result = 0
+
+    for x in AsCounter:
+        count = AsCounter[x]
+
+        if x == count:
+            # いい数
+            continue
+
+        elif x < count:
+            # 多いから減らす
+            result += count - x
+
+        else:
+            # 少ないから全部消す
+            result += count
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -14,18 +14,7 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 case: str = "".join([x for x in sys.stdin])
 
 
-# from textwrap import dedent
-
-# case = dedent(
-#     """
-# 5
-# 1 100
-# 1 300
-# 0 -200
-# 1 500
-# 1 300
-#     """
-# ).strip()
+# NOTE：これ全部間違ってるんで素直にDPの勉強しよう
 
 
 def main():
@@ -33,46 +22,55 @@ def main():
 
     fileteredXYs = [(x[0], x[1]) for x in XYs if (x[0] == 0 or x[1] > 0)]
 
-    pass
+    score = 0
 
-    chunks: list[list[tuple[int, int]]] = []
-    tmp: list[tuple[int, int]] = []
-    current = fileteredXYs[0][0]
+    suspendedPoison: int = 0
 
-    pass
+    suspendedMedicine: list[int] = []
 
-    for x in fileteredXYs:
-        if current == 0 and x[0] == 1:
-            chunks.append(tmp.copy())
-            tmp.clear()
-            tmp.append(x)
+    for x, y in fileteredXYs:
+        if x == 0:
+            # 解毒剤入り
+            if y >= 0:
+                # おいしいので当然食べる
+                score += y
+                # 保留中の毒入りがあれば一番おいしいやつを食べる
+                score += suspendedPoison
+                # 全てを忘れる
+                suspendedPoison = 0
+                suspendedMedicine.clear()
+
+            else:
+                # 薬だが、まずい
+                if suspendedPoison == 0:
+                    # 毒の保留がなければ食べる（保留する）価値なし
+                    continue
+
+                # 保留中の毒と合わせても食べる価値があるなら纏めて食べる
+                if suspendedPoison + y > 0:
+                    suspendedMedicine.append(y)
+                    # score += suspendedPoison + y
+                    # suspendedPoison = 0
+
         else:
-            tmp.append(x)
+            if len(suspendedMedicine) > 0:
+                # 薬を持ってる時に毒をが出たので一旦整理
+                if max(suspendedMedicine) + suspendedPoison > 0:
+                    # 価値があるなら一番いいものを食べる
+                    score += max(suspendedMedicine) + suspendedPoison
 
-        current = x[0]
+                    # 食べたら片づける
+                    suspendedMedicine.clear()
+                    suspendedPoison = 0
 
-    if len(tmp) != 0:
-        chunks.append(tmp.copy())
+                else:
+                    # 価値がなければ薬だけ片づける
+                    suspendedMedicine.clear()
 
-    result = 0
+            # 毒料理の中で一番おいしいものをキープ
+            suspendedPoison = max(suspendedPoison, y)
 
-    for ch in chunks:
-        bestPoison = max([x[1] for x in ch if x[0] == 1] + [0])
-
-        medicines = [x[1] for x in ch if x[0] == 0]
-
-        if len(medicines) == 0:
-            result += bestPoison
-            continue
-
-        bestMedicine = max(medicines) if all([x <= 0 for x in medicines]) else sum([x for x in medicines if x >= 0])
-
-        if bestPoison + bestMedicine > 0:
-            result += bestPoison + bestMedicine
-
-    print(result)
-
-    pass
+    print(score + suspendedPoison)
 
 
 if __name__ == "__main__":
