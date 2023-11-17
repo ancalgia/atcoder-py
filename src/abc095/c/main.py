@@ -17,7 +17,17 @@ case: str = "".join([x for x in sys.stdin])
 def main():
     A, B, C, X, Y = IL(case)
 
-    pass
+    isAMoreNeeded = X > Y
+
+    samePizzaCount = min(X, Y)
+
+    morePizzaCount = abs(X - Y)
+
+    samePizzaPrice = min(samePizzaCount * (A + B), samePizzaCount * (C * 2))
+
+    morePizzaPrice = min(morePizzaCount * (A if isAMoreNeeded else B), morePizzaCount * (C * 2))
+
+    print(samePizzaPrice + morePizzaPrice)
 
 
 if __name__ == "__main__":

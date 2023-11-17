@@ -13,33 +13,33 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 3
+# 4 1 5
+# 3 10 100
+#     """
+# ).strip()
+
 
 def main():
     (N,), Ss, Ts = IALL(case)
 
-    timeDict: dict[int, list[int]] = dict()
-
-    for idx in range(1, N + 1):
-        timeDict[idx] = [Ss[idx - 1], Ts[idx - 1]]
-
-    STs: collections.deque[list[int]] = collections.deque()
-
-    [STs.append([Ss[x], Ts[x]]) for x in range(N)]
+    table = Ts.copy()
 
     while True:
-        current = tuple(x[1] for x in STs)
+        isChanged = False
 
-        newdq: collections.deque[list[int]] = collections.deque()
+        for idx in range(N):
+            if table[idx] > table[idx - 1] + Ss[idx - 1]:
+                table[idx] = table[idx - 1] + Ss[idx - 1]
+                isChanged = True
 
-        # for x in range(N):
-
-        #     tmp =
-
-        #     Ss[x] = min([Ss[x-1]+,])
-
-    time = 0
-
-    pass
+        if not isChanged:
+            [print(x) for x in table]
+            return
 
 
 if __name__ == "__main__":

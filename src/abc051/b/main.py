@@ -13,12 +13,32 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# case = "2 2"
+
 
 def main():
-    N, *STs = SL(case)
+    K, S = IL(case)
 
     pass
 
+    result = 0
 
-if __name__ == '__main__':
+    for x in range(K + 1):
+        if S - x > K * 2:
+            continue
+
+        for y in range(K + 1):
+            if S - x - y > K:
+                continue
+
+            elif x + y > S:
+                break
+
+            else:
+                result += 1
+
+    print(result)
+
+
+if __name__ == "__main__":
     main()

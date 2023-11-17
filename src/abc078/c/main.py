@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, M = IL(case)
+
+    time100 = N - M
+
+    time1900 = M
+
+    kakuritu = 2**M
+
+    print(((time100 * 100) + (time1900 * 1900)) * kakuritu)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
