@@ -17,37 +17,37 @@ case: str = "".join([x for x in sys.stdin])
 
 # case = dedent(
 #     """
-# 3 2
-# ...
-# .#.
-# ..#
-# #.
-# .#
+# 9 8
+# 8 8 2 2 8 8 2 2
 #     """
 # ).strip()
 
 
 def main():
-    NM, *rest = SL(case)
+    (N, M), As = IALL(case)
 
-    N, M = IL(NM)
+    pass
 
-    matrix1 = rest[:N]
-    matrix2 = rest[N:]
+    counter: collections.Counter[int] = collections.Counter([])
 
-    for x in range(N - M + 1):
-        for y in range(N - M + 1):
-            isSame = True
-            for z in range(M):
-                if matrix1[x + z][y : y + M] != matrix2[z]:
-                    isSame = False
-                    break
+    # votes  =[]
 
-            if isSame:
-                print("Yes")
-                return
+    # maxvote = 0
 
-    print("No")
+    currSelection = (9999999999, 0)
+
+    for a in As:
+        if a in counter:
+            counter[a] += 1
+        else:
+            counter[a] = 1
+
+        score = counter[a]
+
+        if score > currSelection[1] or (score == currSelection[1] and a <= currSelection[0]):
+            currSelection = (a, score)
+
+        print(currSelection[0])
 
 
 if __name__ == "__main__":

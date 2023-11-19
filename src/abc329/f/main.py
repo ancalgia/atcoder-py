@@ -17,37 +17,40 @@ case: str = "".join([x for x in sys.stdin])
 
 # case = dedent(
 #     """
-# 3 2
-# ...
-# .#.
-# ..#
-# #.
-# .#
+# 6 5
+# 1 1 1 2 2 3
+# 1 2
+# 6 4
+# 5 1
+# 3 6
+# 4 6
 #     """
 # ).strip()
 
 
 def main():
-    NM, *rest = SL(case)
+    (N, Q), Cs, *Queries = IALL(case)
 
-    N, M = IL(NM)
+    # Cs = [0] + Cs
 
-    matrix1 = rest[:N]
-    matrix2 = rest[N:]
+    CsDict: dict[int, set[int]] = dict()
 
-    for x in range(N - M + 1):
-        for y in range(N - M + 1):
-            isSame = True
-            for z in range(M):
-                if matrix1[x + z][y : y + M] != matrix2[z]:
-                    isSame = False
-                    break
+    # [CsDict.update(idx, set([x])) for idx, x in enumerate(Cs, 1)]
 
-            if isSame:
-                print("Yes")
-                return
+    for idx, x in enumerate(Cs, 1):
+        CsDict[idx] = set([x])
 
-    print("No")
+    pass
+
+    for a, b in Queries:
+        # tmp = Cs[a].()
+
+        # Cs[b].add(tmp)
+        CsDict[b].update(CsDict[a])
+
+        CsDict[a].clear()
+
+        print(len(CsDict[b]))
 
 
 if __name__ == "__main__":

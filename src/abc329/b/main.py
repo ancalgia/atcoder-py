@@ -13,25 +13,13 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
-MOD = 998244353
-
 
 def main():
-    Q, *Queries = IALL(case)
+    (N,), As = IALL(case)
 
-    curr = collections.deque(["1"])
+    m = max(As)
 
-    for x in Queries:
-        if x[0] == 1:
-            curr.append(str(x[1]))
-
-        elif x[0] == 2:
-            curr.popleft()
-
-        else:
-            tmp = int("".join(curr)) % MOD
-
-            print(tmp)
+    print(max([x for x in As if x != m]))
 
 
 if __name__ == "__main__":

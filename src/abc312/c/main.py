@@ -15,10 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), As, Bs = IALL(case)
 
-    pass
+    As.sort()
+    Bs.sort()
+
+    for x in sorted(set(As + Bs)):
+        sellers = bisect.bisect_right(As, x)
+        buyers = M - bisect.bisect_left(Bs, x)
+
+        if sellers >= buyers:
+            print(x)
+            return
+
+        sellers2 = bisect.bisect_right(As, x + 1)
+        buyers2 = M - bisect.bisect_left(Bs, x + 1)
+
+        if sellers2 >= buyers2:
+            print(x + 1)
+            return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

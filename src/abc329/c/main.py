@@ -13,25 +13,33 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
-MOD = 998244353
-
 
 def main():
-    Q, *Queries = IALL(case)
+    N, S = SL(case)
 
-    curr = collections.deque(["1"])
+    N = int(N)
 
-    for x in Queries:
-        if x[0] == 1:
-            curr.append(str(x[1]))
+    dicts: dict[str, int] = dict()
 
-        elif x[0] == 2:
-            curr.popleft()
+    lastStr = ""
+
+    tmpCount = 0
+
+    for c in S:
+        if c != lastStr:
+            lastStr = c
+            tmpCount = 1
+            if c not in dicts:
+                dicts[c] = tmpCount
 
         else:
-            tmp = int("".join(curr)) % MOD
+            tmpCount += 1
 
-            print(tmp)
+            dicts[c] = max(dicts[c], tmpCount)
+
+    result = sum([dicts[x] for x in dicts])
+
+    print(result)
 
 
 if __name__ == "__main__":
