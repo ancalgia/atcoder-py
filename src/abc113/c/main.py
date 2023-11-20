@@ -15,10 +15,27 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), *PYs = IALL(case)
 
     pass
 
+    YPIdx = [(y, p, idx) for idx, (p, y) in enumerate(PYs, 1)]
 
-if __name__ == '__main__':
+    YPIdx.sort()
+
+    results: dict[int, str] = {}
+
+    counter: collections.Counter[int] = collections.Counter()
+
+    for y, p, idx in YPIdx:
+        counter[p] += 1
+
+        results[idx] = f"{str(p).zfill(6)}{str(counter[p]).zfill(6)}"
+
+    for x in range(1, M + 1):
+        if x in results:
+            print(results[x])
+
+
+if __name__ == "__main__":
     main()

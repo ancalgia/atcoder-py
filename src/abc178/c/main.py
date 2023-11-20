@@ -11,14 +11,27 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
-case: str = "".join([x for x in sys.stdin])
+# case: str = "".join([x for x in sys.stdin])
+
+case = "3"
+
+MOD = 10**9 + 7
 
 
 def main():
-    N, *STs = SL(case)
+    N = int(case)
+
+    if N == 1:
+        print(0)
+        return
+
+    oneNines = 2
+
+    print((oneNines * (10 ** (N - 2))) % MOD)
+    # print((oneNines) % MOD)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
