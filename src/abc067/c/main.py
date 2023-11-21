@@ -15,10 +15,20 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), As = IALL(case)
 
-    pass
+    allSum = sum(As)
+
+    tmp = 0
+    currMin = 10**40
+
+    for x in As[:-1]:
+        tmp += x
+
+        currMin = min(currMin, abs((allSum - tmp) - tmp))
+
+    print(currMin)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
