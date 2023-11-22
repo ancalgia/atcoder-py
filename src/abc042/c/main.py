@@ -13,12 +13,29 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 1000 8
+# 1 3 4 5 6 7 8 9
+#     """
+# ).strip()
+
 
 def main():
-    N, *STs = SL(case)
+    (N, K), Ds = IALL(case)
 
-    pass
+    dSet = set(map(str, Ds))
+
+    while True:
+        hoge = set(str(N)) & dSet
+        if len(hoge) == 0:
+            print(N)
+            return
+
+        N += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -11,14 +11,41 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
+# 素因数分解
+def factorization(n: int) -> list[list[int]]:
+    arr: list[list[int]] = []
+    temp = n
+    for i in range(2, int(-(-(n**0.5) // 1)) + 1):
+        if temp % i == 0:
+            cnt = 0
+            while temp % i == 0:
+                cnt += 1
+                temp //= i
+            arr.append([i, cnt])
+    if temp != 1:
+        arr.append([temp, 1])
+    if arr == []:
+        arr.append([n, 1])
+    return arr
+
+
 case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, M = IL(case)
+
+    if N * N < M:
+        print(-1)
+        return
+
+    while True:
+        fac = factorization(M)
+
+        print(fac)
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

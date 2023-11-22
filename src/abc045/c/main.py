@@ -15,10 +15,28 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, *_ = SL(case)
 
-    pass
+    allPtn = list(itertools.product(*[[True, False] for x in range(len(S) - 1)]))
+
+    result = 0
+
+    for ptn in allPtn:
+        tmp = 0
+
+        currPtn = list(ptn) + [False]
+
+        currStr = ""
+
+        for c, op in zip(S, currPtn):
+            currStr += c
+            if op:
+                currStr += "+"
+
+        result += sum(map(int, currStr.split("+")))
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

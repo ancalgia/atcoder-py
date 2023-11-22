@@ -13,12 +13,51 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 
 case: str = "".join([x for x in sys.stdin])
 
+# from textwrap import dedent
+
+# case = dedent(
+#     """
+# 3 4 730
+# 60 90 120
+# 80 150 80 150
+#     """
+# ).strip()
+# # 7
+
 
 def main():
-    N, *STs = SL(case)
+    (N, M, K), As, Bs = IALL(case)
 
+    aCum: list[int] = []
+    bCum: list[int] = []
+
+    tmp = 0
+    for x in As:
+        tmp += x
+        aCum.append(tmp)
+
+    tmp = 0
+    for x in Bs:
+        tmp += x
+        bCum.append(tmp)
+
+    maxBooks = 0
+
+    # Aを読める最大数
+    maxA = bisect.bisect_right(aCum, K)
+
+    # print(maxA)
     pass
 
+    for reada in range(maxA, -1, -1):
+        nokoriTIme = K - (aCum[reada - 1] if reada else 0)
 
-if __name__ == '__main__':
+        bCount = bisect.bisect_right(bCum, nokoriTIme)
+
+        maxBooks = max(maxBooks, reada + bCount)
+
+    print(maxBooks)
+
+
+if __name__ == "__main__":
     main()
