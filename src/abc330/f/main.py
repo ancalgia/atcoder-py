@@ -15,21 +15,10 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    (N,), As = IALL(case)
-
-    As.sort(reverse=True)
-
-    hoge = list(itertools.chain.from_iterable([[x, x] for x in As]))
-
-    result = 0
-
-    for x in range(1, N):
-        result += hoge[x]
-
-    print(result)
+    N, *STs = SL(case)
 
     pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

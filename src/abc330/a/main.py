@@ -15,18 +15,9 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    (N,), As = IALL(case)
+    (N, L), As = IALL(case)
 
-    As.sort(reverse=True)
-
-    hoge = list(itertools.chain.from_iterable([[x, x] for x in As]))
-
-    result = 0
-
-    for x in range(1, N):
-        result += hoge[x]
-
-    print(result)
+    print(len([x for x in As if x >= L]))
 
     pass
 

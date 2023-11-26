@@ -15,20 +15,21 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    (N,), As = IALL(case)
+    (N, L, R), As = IALL(case)
 
-    As.sort(reverse=True)
+    results = []
 
-    hoge = list(itertools.chain.from_iterable([[x, x] for x in As]))
+    for a in As:
+        if a < L:
+            results.append(L)
 
-    result = 0
+        elif a > R:
+            results.append(R)
 
-    for x in range(1, N):
-        result += hoge[x]
+        else:
+            results.append(a)
 
-    print(result)
-
-    pass
+    print(*results)
 
 
 if __name__ == "__main__":
