@@ -15,10 +15,30 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *XYs = IALL(case)
 
-    pass
+    # print(XYs)
+
+    resultSet: set[tuple[int, int]] = set()
+
+    for a in range(N):
+        for b in range(a + 1, N):
+            cityA = XYs[a]
+            cityB = XYs[b]
+
+            xDist = cityB[0] - cityA[0]
+            yDist = cityB[1] - cityA[1]
+
+            gcd = math.gcd(abs(xDist), abs(yDist))
+
+            xDist //= gcd
+            yDist //= gcd
+
+            resultSet.add((xDist, yDist))
+            resultSet.add((-xDist, -yDist))
+
+    print(len(resultSet))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

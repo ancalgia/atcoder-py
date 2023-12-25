@@ -15,10 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N, M), As, *BCs = IALL(case)
 
-    pass
+    hpAs: list[int] = As
+
+    heapq.heapify(hpAs)
+
+    BCs.sort(key=lambda x: x[1], reverse=True)
+
+    for b, c in BCs:
+        for x in range(b):
+            popped = heapq.heappop(hpAs)
+
+            if popped < c:
+                heapq.heappush(hpAs, c)
+            else:
+                heapq.heappush(hpAs, popped)
+                break
+
+    print(sum(hpAs))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

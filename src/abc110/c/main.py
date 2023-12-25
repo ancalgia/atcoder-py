@@ -15,10 +15,34 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    S, T = SL(case)
 
-    pass
+    SList = list(S)
+    TList = list(T)
+
+    Sidxes: list[list[int]] = []
+    while True:
+        if len(SList) == 0:
+            break
+        tgt = SList[0]
+        Sidxes.append([idx for idx, x in enumerate(SList) if x == tgt])
+        SList = [x for x in SList if x != tgt]
+
+    Tidxes: list[list[int]] = []
+    while True:
+        if len(TList) == 0:
+            break
+        tgt = TList[0]
+        Tidxes.append([idx for idx, x in enumerate(TList) if x == tgt])
+        TList = [x for x in TList if x != tgt]
+
+    for si, ti in zip(Sidxes, Tidxes):
+        if si != ti:
+            print("No")
+            return
+
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

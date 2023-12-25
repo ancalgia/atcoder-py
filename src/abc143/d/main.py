@@ -15,10 +15,28 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), Ls = IALL(case)
 
-    pass
+    Ls.sort()
+
+    result = 0
+
+    for x in range(N):
+        bar1 = Ls[x]
+
+        for y in range(x + 1, N):
+            bar2 = Ls[y]
+
+            ableMax = bar1 + bar2
+
+            tgt = Ls[y + 1 :]
+
+            ableCnt = bisect.bisect_left(tgt, ableMax)
+
+            result += ableCnt
+
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

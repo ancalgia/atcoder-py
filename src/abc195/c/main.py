@@ -17,6 +17,8 @@ case: str = "".join([x for x in sys.stdin])
 # case = "999999"
 # case = "1010"
 # case = "10000"
+# case = "193162"  # 192163
+# case = "27182818284590"  # 107730272137364
 
 
 def main():
@@ -26,20 +28,20 @@ def main():
         print(0)
         return
 
-    d, m = divmod(len(str(N)), 3)
+    ketasu = len(str(N))
+
+    commas = (ketasu - 1) // 3
 
     result = 0
 
-    for x in range(d):
-        result += x * 999 * (1000**x)
-        pass
+    tmp999 = ""
 
-    # result += (d) * (N - (10 ** (len(str(N)) - 1)) + 1)
-    result += (d) * (N - (10 ** (d * 3)) + 1)
+    for x in range(commas):
+        tmp999 += "999"
+
+        result += N - int(tmp999)  # * comma
 
     print(result)
-
-    pass
 
 
 if __name__ == "__main__":

@@ -15,9 +15,26 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    X, Y, A, B = IL(case)
 
-    pass
+    exp = 0
+
+    # isMinus1 = True
+
+    if X * A >= Y and X + B >= Y:
+        print(0)
+        return
+
+    while X < Y:
+        if X * A < X + B:
+            X *= A
+            exp += 1
+
+        else:
+            exp += (Y - X - 1) // B
+            break
+
+    print(exp)
 
 
 if __name__ == "__main__":

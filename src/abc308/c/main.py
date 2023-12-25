@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    (N,), *ABs = IALL(case)
 
-    pass
+    ratios: list[tuple[float, int]] = []
+
+    for idx, x in enumerate(ABs, 1):
+        tmp = (1 - (x[0] * 10**20 // (x[0] + x[1])), idx)
+        ratios.append(tmp)
+
+    ratios.sort()
+
+    print(*[x[1] for x in ratios])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -15,10 +15,22 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    N, S = SL(case)
 
-    pass
+    N = int(N)
+
+    result = collections.deque([N])
+
+    for idx, c in enumerate(S[::-1], 1):
+        num = N - idx
+
+        if c == "R":
+            result.appendleft(num)
+        else:
+            result.append(num)
+
+    print(*result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

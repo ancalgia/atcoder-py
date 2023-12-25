@@ -12,25 +12,25 @@ def IALL(s: str) -> list[list[int]]: return [list(map(int, x.split())) for x in 
 # fmt: on
 
 
-# 文字列のランレングス圧縮（RLE）
-def runLengthEncode(S: str) -> list[tuple[str, int]]:
-    grouped = itertools.groupby(S)
-    res = []
-    for k, v in grouped:
-        res.append((k, int(len(list(v)))))
-    return res
+# # 文字列のランレングス圧縮（RLE）
+# def runLengthEncode(S: str) -> list[tuple[str, int]]:
+#     grouped = itertools.groupby(S)
+#     res = []
+#     for k, v in grouped:
+#         res.append((k, int(len(list(v)))))
+#     return res
 
 
-case: str = "".join([x for x in sys.stdin])
+# case: str = "".join([x for x in sys.stdin])
 
 
-# case = "atcoderrr"
+case = "chchokudai"
 
 
 def main():
     S, *_ = SL(case)
 
-    rle = runLengthEncode(S)
+    # rle = runLengthEncode(S)
 
     # print(rle)
 
@@ -44,10 +44,15 @@ def main():
 
     # dp[0][0] = 1
 
-    for idx, c in enumerate(S, 1):
-        for idx2, c2 in enumerate("chokudai", 1):
+    for idx, c in enumerate(S):
+        for idx2, c2 in enumerate("*chokudai"):
+            if idx2 == 0:
+                continue
+
             if c != c2:
-                dp
+                dp[idx][idx2] = dp[idx][idx2 - 1] * 2
+
+    pass
 
     # for idx1 in range(rleLen):
     #     if rle[idx1][0] != "c":

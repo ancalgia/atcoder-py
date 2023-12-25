@@ -15,10 +15,18 @@ case: str = "".join([x for x in sys.stdin])
 
 
 def main():
-    N, *STs = SL(case)
+    W, H, X, Y = IL(case)
+
+    half = (W * H) / 2
+
+    center = (W / 2, H / 2)
+
+    isCenter = center == (X, Y)
+
+    print(half, int(isCenter))
 
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
